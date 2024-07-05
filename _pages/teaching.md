@@ -6,7 +6,7 @@ description: Materials for courses you taught. Replace this text with your descr
 nav: true
 nav_order: 6
 display_categories: [kudk, oufi, njitcn]
-horizontal: true
+horizontal: false
 ---
 
 <!-- pages/projects.md -->
