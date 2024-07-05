@@ -40,7 +40,7 @@ repo_trophies:
 # will use title and url fields
 # Take a look to https://github.com/jekyll/jekyll-feed for more customization
 
-rss_icon: true
+rss_icon: false
 
 # -----------------------------------------------------------------------------
 # Layout
@@ -74,7 +74,7 @@ blogger_url: # your blogger URL
 bluesky_url: # your bluesky URL
 dblp_url: # your DBLP profile url
 discord_id: # your discord id (18-digit unique numerical identifier)
-facebook_id: # your facebook id
+facebook_id: 100085288350390 # your facebook id
 flickr_id: # your flickr id
 github_username: # your GitHub user name
 gitlab_username: # your GitLab user name
@@ -390,7 +390,7 @@ external_links:
 # MAKE SURE imagemagick is installed and on your PATH before enabling imagemagick. In a terminal, run:
 #   convert -version
 imagemagick:
-  enabled: true # enables responsive images for your site (recommended, see https://github.com/alshedivat/al-folio/issues/537)
+  enabled: false # enables responsive images for your site (recommended, see https://github.com/alshedivat/al-folio/issues/537)
   widths:
     - 480
     - 800
