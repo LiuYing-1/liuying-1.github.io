@@ -18,7 +18,7 @@ social: true # includes social icons at the bottom of the page
 
 Hi there and welcome to my website! :wave:
 
-I am a MSc graduate in the [Department of Computer Science](https://di.ku.dk/english) at the [University of Copenhagen](https://www.ku.dk/english/), where I am pursuing my passion for **Image Processing** and **Advanced Algorithms**. As an aspiring student in the field of **Image Analysis**, I am dedicated to leaving no stone unturned in my pursuit of knowledge and excellence.
+I am a MSc graduate in the [Department of Computer Science](https://di.ku.dk/english) at the [University of Copenhagen](https://www.ku.dk/english/), where I am pursuing my passion for **Image Processing**, **Advanced Algorithms** and **Deep Learning**. As an aspiring student in the field of **Image Analysis**, I am dedicated to leaving no stone unturned in my pursuit of knowledge and excellence.
 
 Through this website, I hope to provide a glimpse into my **life** as a student, offering insights into both my **academic pursuits** and my **personal interests**. So whether you're looking for tips on tackling challenging coursework or seeking inspiration for your next travel destination, I invite you to join me on this journey of discovery and growth. 
 
