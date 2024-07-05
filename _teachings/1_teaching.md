@@ -1,10 +1,11 @@
 ---
 layout: page
-title: project 7
-description: with background image
-img: assets/img/4.jpg
+title: Advanced Deep Learning
+description: Teacher's Assistant for the course in 24B4.
+img: assets/img/adl24.jpg
 importance: 1
-category: work
+category: kudk
+redirect: https://kurser.ku.dk/course/ndak22002u/2023-2024
 related_publications: false
 ---
 

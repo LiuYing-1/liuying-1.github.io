@@ -1,12 +1,11 @@
 ---
 layout: page
-title: Advanced Deep Learning
-description: TA for the course in 2024B4
+title: project 1
+description: with background image
 img: assets/img/12.jpg
 importance: 1
-category: kudk
-redirect: https://kurser.ku.dk/course/ndak22002u/2023-2024/
-related_publications: false
+category: work
+related_publications: true
 ---
 
 Every project has a beautiful feature showcase page.
