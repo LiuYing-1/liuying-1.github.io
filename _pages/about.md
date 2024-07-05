@@ -9,17 +9,9 @@ profile:
   image: profile.jpg
   image_circular: false # crops the image to make it circular
   more_info: >
-    <div class="location">
-      <i class="fas fa-map-marker-alt"></i> Copenhagen, Denmark
-    </div>
-    <br>
-    <div class="social">
-      <a href="tel:+45 52671751"><i class="fas fa-mobile-alt"></i></a>
-      <a href="mailto:ly581099@gmail.com"><i class="fas fa-envelope"></i></a>
-      <a href="https://github.com/LiuYing-1"><i class="fab fa-github"></i></a>
-      <a href="https://www.linkedin.com/in/liu-ying-463ab925b/"><i class="fab fa-linkedin"></i></a>
-      <a href="https://www.facebook.com/profile.php?id=100085288350390/"><i class="fab fa-facebook"></i></a>
-    </div>
+    <p>Copenhagen, Denmark<i class="fas fa-map-alt"></i></p>
+    <p>123 your address street</p>
+    <p>Your City, State 12345</p>
 
 news: true # includes a list of news items
 selected_papers: false # includes a list of papers marked as "selected={true}"
