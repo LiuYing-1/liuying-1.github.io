@@ -2,21 +2,21 @@
   type: map
   contents:
     - name: Full Name
-      value: Albert Einstein
+      value: Ying Liu
     - name: Date of Birth
-      value: 14th March 1879
+      value: 28th December 1999
     - name: Languages
-      value: English, German
+      value: Chinese, English
 
 - title: Education
   type: time_table
   contents:
-    - title: PhD
-      institution: University of Zurich, Zurich, Switzerland
-      year: 1905
+    - title: MSc in Computer Science
+      institution: Department of Computer Science, University of Copenhagen
+      year: 2022 - 2024
       description:
-        - Description 1.
-        - Description 2.
+        - Focus on AI in Medical Image Analysis.
+        - All the courses are related to
         - title: Description 3.
           contents:
             - Sub-description 1.
