@@ -9,13 +9,11 @@ profile:
   image: profile.jpg
   image_circular: false # crops the image to make it circular
   more_info: >
-    <p>Copenhagen, Denmark<i class="fas fa-map-alt"></i></p>
-    <p>123 your address street</p>
-    <p>Your City, State 12345</p>
+    <p>Copenhagen, Denmark</p>
 
 news: true # includes a list of news items
 selected_papers: false # includes a list of papers marked as "selected={true}"
-social: false # includes social icons at the bottom of the page
+social: true # includes social icons at the bottom of the page
 ---
 
 Hi there and welcome to my website! :wave:
