@@ -9,3 +9,4 @@ display_categories: [kudk, oufi, njitcn]
 horizontal: false
 ---
 
+The author said it could be designed to be similar to the projects page. I will try to do that, but not for now.
