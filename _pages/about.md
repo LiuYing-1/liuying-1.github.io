@@ -2,7 +2,7 @@
 layout: about
 title: About
 permalink: /
-subtitle: <a href='#'>MSc Graduate</a> @ <a href='https://www.ku.dk/english/'>University of Copenhagen</a> <img src="./assets/img/ku-ucph-logo-svg.svg.png" style="width:1rem"></img>
+subtitle: <a href='#'>MSc Graduate</a> @ <a href='https://www.ku.dk/english/'>University of Copenhagen</a> <img src="/assets/img/ku-ucph-logo-svg.svg.png" style="width:1rem"></img>
 
 profile:
   align: right
