@@ -288,7 +288,7 @@ There are already a lot different versions of segmentation methods, and segmenta
 
 ##### Thresholding
 
-This is some technique involved in the course [_Signal and Image Processing_](https://liuying-1.github.io/blog/2023/histogram/#intensity-histograms), check it in detail to help recall.
+This is some technique involved in the course [_Signal and Image Processing_](https://liuying-1.github.io/blog/2023/histogram), check it in detail to help recall.
 
 - Histogram of intensity distribution
 - One or multiple thresholds are used for classifying image pixels into sub partitions

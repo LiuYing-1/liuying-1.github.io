@@ -74,7 +74,7 @@ Then, the second phase _comes after we reconstructed those tables_ and we redo *
 
 <font color=red><b>UNDO Phase</b></font>
 
-Undo the transactions that have not been successfully committed yet. For that, we will proceed as in the normal operation in the normal abort of the transaction as last time. [Recovery | Normal](https://yingliu.bio/advanced-computer-system/recovernormal)
+Undo the transactions that have not been successfully committed yet. For that, we will proceed as in the normal operation in the normal abort of the transaction as last time. [Recovery | Normal](https://liuying-1.github.io/advanced-computer-system/recovernormal)
 
 <hr>
 

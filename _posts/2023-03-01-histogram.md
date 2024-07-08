@@ -21,7 +21,7 @@ toc:
 
 <div align=center><img src="https://i.imgur.com/BZI3kil.jpeg" alt="1511680791922_.pic" style="zoom:80%;" /></div>
 
-<div class="reference" style="color: #999; font-size: 0.8em; margin-top: 1em; margin-bottom: 1em;">Reference: Lecture from <a href="https://di.ku.dk/english/staff/vip/researchers_image/?pure=en/persons/83684" _target="blank">Kim Steenstrup Pedersen</a></div>
+<div class="reference" style="color: 999; font-size: 0.8em; margin-top: 1em; margin-bottom: 1em;">Reference: Lecture from <a href="https://di.ku.dk/english/staff/vip/researchers_image/?pure=en/persons/83684" _target="blank">Kim Steenstrup Pedersen</a></div>
 
 ## Pixel-wise Thresholding
 
@@ -104,7 +104,7 @@ We can also use this approach on a color image.
 
 I am interested in segmenting the red picture. I could do this on red channel but it doesn't work. But if I instead pick a range of Hue value, which represents the color.
 
-**_Step 2 => Choose a range of Hue values $[H_{\min}, H_{\max}]$ to represent the relevant color (red)._**
+**_Step 2 => Choose a range of Hue values $[H_{\min}, H*{\max}]$ to represent the relevant color (red).***
 
 **_Step 3 => Set all pixels outside this range to zero and all inside to 1._**
 

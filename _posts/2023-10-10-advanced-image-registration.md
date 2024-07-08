@@ -297,7 +297,7 @@ The use of landmarks is a common technique in image registration, and it's parti
 
     **硬件限制**：图像分割通常需要大量计算资源，特别是在高分辨率或大规模数据集的情况下。如果计算资源受限，速度可能会受到限制。
 
-See details about [Atlas-based Segmentation](https://liuying-1.github.io/blog/2023/image-registration-l1/#atlas-based-segmentation) :point_left:
+See details about [Atlas-based Segmentation](https://liuying-1.github.io/blog/2023/image-registration-l1/) :point_left:
 
 ##### Multi-modal image registration
 

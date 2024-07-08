@@ -55,11 +55,11 @@ Interleaving is one possible execution of these actions and we allow the transac
 
 **Serial schedule**: Schedule that does not interleave the actions of different transactions.
 
-**Equivalent schedules**: See [Concurrency Control 1](https://yingliu.bio/advanced-computer-system/concurrency-1/)
+**Equivalent schedules**: See [Concurrency Control 1](https://liuying-1.github.io/advanced-computer-system/concurrency/)
 
 - Moreover, we can abstract a way of what the transactions actually do here the actual computational operations just see the `READ`s and `WRITE`s. So we can not somehow assume anything about what these transactions might do to the state of the system so because we need to require that all the values read by the transactions will be the same in the two transactions. So this encodes the assumption that we abstract away the logic of two of the actual transaction.
 
-**Serializable schedule**: [Concurrency Control 1](https://yingliu.bio/advanced-computer-system/concurrency-1/)
+**Serializable schedule**: [Concurrency Control 1](https://liuying-1.github.io/advanced-computer-system/concurrency/)
 
 So if we have a serializable schedule, this is the kind of core property that helps us achieve why we are interested in serializable schedules. It helps us to reason about consistency. Consistency is not the task of the database management system to provide it somehow application specific but active if your schedules are not serializable, it becomes very hard for the use of a DBMS to think about consistency.
 
