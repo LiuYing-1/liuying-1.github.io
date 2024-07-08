@@ -173,6 +173,14 @@ disqus_shortname: al-folio # put your disqus shortname
 #       - url: https://blog.google/technology/ai/google-gemini-update-flash-ai-assistant-io-2024/
 #         published_date: 2024-05-14
 
+external_sources:
+  - name:
+    rss_url: 
+  - name: 
+    posts:
+      - url:
+        published_date:
+
 # -----------------------------------------------------------------------------
 # Newsletter
 # -----------------------------------------------------------------------------
