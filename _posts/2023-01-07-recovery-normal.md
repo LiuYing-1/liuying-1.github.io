@@ -16,8 +16,6 @@ authors:
       name: DIKU, UCPH
 ---
 
-
-
 ## Recovery
 
 ### Do-it-yourself-recap: The many faces of atomicity

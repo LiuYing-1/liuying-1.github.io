@@ -19,8 +19,6 @@ toc:
   sidebar: left
 ---
 
-
-
 <div class="reference" style="color: #999; font-size: 0.8em; margin-top: 1em; margin-bottom: 1em; ">Reference: Lecture from <a href="https://di.ku.dk/english/staff/?pure=en/persons/254908" _target="blank">Stefan Horst Sommer</a></div>
 
 ## Segmentation Overview

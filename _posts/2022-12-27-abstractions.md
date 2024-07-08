@@ -18,8 +18,6 @@ authors:
       name: DIKU, UCPH
 ---
 
-
-
 ## Why study (big) computer systems?
 
 "_How can I program large systems with clean interfaces and high performance?_ "

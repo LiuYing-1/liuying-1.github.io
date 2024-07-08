@@ -19,7 +19,6 @@ toc:
   sidebar: left
 ---
 
-
 ### Neural networking learning
 
 Using data to adapt (train) the parameters (weights) of a mathematical model.

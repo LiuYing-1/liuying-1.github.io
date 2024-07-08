@@ -19,8 +19,6 @@ authors:
       name: DIKU, UCPH
 ---
 
-
-
 ## Do-it-yourself-recap
 
 **Locking Solutions for Isolation in ACID Transactions**

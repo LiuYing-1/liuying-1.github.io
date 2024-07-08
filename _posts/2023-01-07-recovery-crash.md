@@ -16,8 +16,6 @@ authors:
       name: DIKU, UCPH
 ---
 
-
-
 ## Recovery: Crash
 
 **RAM**

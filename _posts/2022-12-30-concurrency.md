@@ -18,8 +18,6 @@ authors:
       name: DIKU, UCPH
 ---
 
-
-
 <div align=right><I>Reference: This note is based on the Course Advanced Computer Systems from UCPH</I></div>
 
 ## Do-it-yourself Recap
