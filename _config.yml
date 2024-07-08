@@ -174,12 +174,12 @@ disqus_shortname: al-folio # put your disqus shortname
 #         published_date: 2024-05-14
 
 external_sources:
-  - name:
-    rss_url:
-  - name:
-    posts:
-      - url:
-        published_date:
+  # - name:
+  #   rss_url: 
+  # - name:
+  #   posts:
+  #     - url:
+  #       published_date:
 
 # -----------------------------------------------------------------------------
 # Newsletter
