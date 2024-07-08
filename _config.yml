@@ -175,7 +175,7 @@ disqus_shortname: al-folio # put your disqus shortname
 
 external_sources:
   # - name:
-  #   rss_url: 
+  #   rss_url:
   # - name:
   #   posts:
   #     - url:
