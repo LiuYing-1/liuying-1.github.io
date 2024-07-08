@@ -19,13 +19,7 @@ authors:
       name: DIKU, UCPH
 ---
 
-<div align=center>
-  <div class="row mt-3 mb-3">
-    <div class="col-sm mt-3 mt-md-0">
-      <img src="https://i.imgur.com/NBdawZO.png" alt="Group_8_YhdE3vh" class="img-fluid rounded z-depth-1" />
-    </div>
-  </div>
-</div>
+
 
 ## Do-it-yourself-recap
 

@@ -16,13 +16,7 @@ authors:
       name: DIKU, UCPH
 ---
 
-<div align=center>
-  <div class="row mt-3 mb-3">
-    <div class="col-sm mt-3 mt-md-0">
-      <img src="https://i.imgur.com/NMeVaGS.png" alt="image-20230104213954735" style="zoom:80%;" class="img-fluid rounded z-depth-1" />
-    </div>
-  </div>
-</div>
+
 
 ## Recovery
 
