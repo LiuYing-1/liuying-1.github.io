@@ -10,7 +10,7 @@ toc: true
 img: assets/img/nerd-with-cover.jpg
 ---
 
-<div class="row mt-3">
+<div class="row mt-3 mb-3">
     <div class="col-sm mt-3 mt-md-0">
 		 <img src="https://i.imgur.com/U8zSWGe.jpeg" alt="nerd" class="img-fluid rounded z-depth-1" data-zoomable %}
     </div>

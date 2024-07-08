@@ -10,7 +10,7 @@ gist_comments: true
 thumbnail: assets/img/new-year.jpg
 ---
 
-<div class="row mt-3">
+<div class="row mt-3 mb-3">
     <div class="col-sm mt-3 mt-md-0">
 		 <img src="https://i.imgur.com/YfD5KLi.jpeg" alt="godt-nytar" class="img-fluid rounded z-depth-1" data-zoomable />
     </div>

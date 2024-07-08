@@ -18,7 +18,7 @@ authors:
       name: DIKU, UCPH
 ---
 
-<div class="row mt-3">
+<div class="row mt-3 mb-3">
     <div class="col-sm mt-3 mt-md-0">
      <img src="https://i.imgur.com/EFRqraM.png" class="img-fluid rounded z-depth-1" data-zoomable>
     </div>
