@@ -21,7 +21,6 @@ toc:
 
 <div align=center><img src="https://i.imgur.com/k1XNh2S.jpg" style="zoom: 80%"></div>
 
-
 <div class="reference" style="color: #999; font-size: 0.8em; margin-top: 1em; margin-bottom: 1em;">Reference: Lecture from <a href="https://di.ku.dk/english/staff/vip/researchers_image/?pure=en/persons/83684" _target="blank">Kim Steenstrup Pedersen</a></div>
 
 ## Pixel-wise Operations
@@ -38,7 +37,7 @@ It depends on the application area and which format you use. In this course, we 
 
 **PNG**
 
-- Provides **<u>lossless compression</u>**. Can store pixel data in the quantization of 1, 2, 4, 8, or 16 bit unsigned integer per channel and supports pixel formats grayscale, RGB, indexed, grayscale and alpha, and RGBA (A=alpha channel). ***Alpha channel*** is the channel for transparency. 
+- Provides **<u>lossless compression</u>**. Can store pixel data in the quantization of 1, 2, 4, 8, or 16 bit unsigned integer per channel and supports pixel formats grayscale, RGB, indexed, grayscale and alpha, and RGBA (A=alpha channel). **_Alpha channel_** is the channel for transparency.
 
 - <div style="font-family: 'Noto Serif SC'">阿尔法通道（α Channel或Alpha Channel）是指一张图片的透明和半透明度。例如：一个使用每个像素 16 比特存储的位图，对于图形中的每一个像素而言，可能以 5 个比特表示红色，5 个比特表示绿色，5 个比特表示蓝色，最后一个比特是阿尔法。在这种情况下，它要么表示透明要么不是，因为阿尔法比特只有0或1两种不同表示的可能性。</div>
 
@@ -50,7 +49,7 @@ It depends on the application area and which format you use. In this course, we 
 
 <div align=center><img src="https://i.imgur.com/hJssMnS.png" style="zoom:67%;" /></div>
 
-Lossless compression preserves all information and the process is invertable. That means, we can decompress and get exactly the same as input to the compression algorithm. Lossy compression is done by approximating the image (throwing away information). That means you cannot invert the process and get the same image back as you put into the compression algorithm. But lossy compression usually leads to much more higher compression factor so more compact representations than lossless compression does. 
+Lossless compression preserves all information and the process is invertable. That means, we can decompress and get exactly the same as input to the compression algorithm. Lossy compression is done by approximating the image (throwing away information). That means you cannot invert the process and get the same image back as you put into the compression algorithm. But lossy compression usually leads to much more higher compression factor so more compact representations than lossless compression does.
 
 <div style="font-family: 'Noto Serif SC'">表示更紧凑</div>
 
@@ -66,7 +65,7 @@ What is the consequence with the JPEG compression, especially when we have very 
 
 This image is stored in JPEG, and the quality parameter was chosen very low. So the file size is low, but the quality of the image is pretty bad. If we look carefully, we might see more blocking effects up in the sky, like patches of sky where it seems that you have a constant color, and you can see sharp edges between them.
 
-If we start to do some manipulation, I'm just taking the RGB image converting it to the Hue representation color space. And then, I just show the Hue channel. Remember the Hue channel is just one value per pixel thing. I here used matplotlib *HUE*.
+If we start to do some manipulation, I'm just taking the RGB image converting it to the Hue representation color space. And then, I just show the Hue channel. Remember the Hue channel is just one value per pixel thing. I here used matplotlib _HUE_.
 
 It is clear that there's something come completely wrong with this image. We see fake structures these checkerboards so we can get misleading results. So in general, <u>we should be careful using lossy compression when we want to do image processing and analysis, because you have this effect that you are throwing away information. Especially if you use a low quality parameter when you do this JPEG compression.</u>
 
@@ -80,48 +79,41 @@ Simple mathematcial operations that we want to do on images.
 
 Pixel-wise operations, this means, it's a mathematical operation that I apply to every single pixel in an image.
 
-An example of what we might want to do are 
+An example of what we might want to do are
 
 - Adding or subtracting a constant
-  
-  
+
   $$
   J(r, c) = I_A(r, c) + C
   $$
-  
-  
+
   I take some input image $I_A$, and add pixel given at row $r$, and column $c$ and add some constant $C$. At any other pixel, I do the same thing, adding a constant, then, I get a result image where it's the original image where every pixel has been shifted by this constant here. You should figure it as we don't really change the spatial structure or the pixels. We only change wahtever values you have inside the stored in it.
-  
+
 - Multiplication or division by a constant
-  
-  
+
   $$
   J(r, c) = C\cdot  I_A(r, c)
   $$
-  
-  
+
   It's pixel-wise. We multiply by this constant $C$ at every pixel $(r, c)$. That returns a new image $J$.
-  
+
 - Adding or subtracting images (pixel-wise)
-  
-  
+
   $$
   J(r, c) = I_A(r, c)+I_B(r, c)
   $$
-  
-  
+
   We can incolve several images. For instance, we can take two images, $I_A$ and $I_B$ and add them together. Pixel-wise add or subtract if you want, that means, for a specific pixel at row $r$ and column $c$, we take whatever value we have stored in the image $A$ and add it to whatever value we have stored in the image $B$ and that gives you a new resulting pixel value that we store in this image $J$ at the pixel $(r, c)$.
-  
+
 - Multiplication or division of images (pixel-wise)
-  
-  
+
   $$
   J(r, c) = I_A(r, c)\cdot I_B(r, c)
   $$
 
 All operations here are done per pixel.
 
-! ***Notice***: When we do this, we need to be careful and think about the quantization levels that we have chosen for our image representation. We can easily get either over- or underflow as we do see these operations. So, normally, we need to combine such operations (pixel-wise) with some clippling of the range of output. 
+! **_Notice_**: When we do this, we need to be careful and think about the quantization levels that we have chosen for our image representation. We can easily get either over- or underflow as we do see these operations. So, normally, we need to combine such operations (pixel-wise) with some clippling of the range of output.
 
 For example, you choose an 8-bit representation for every pixel. And it's an 8-bit unsigned pixel. If I do the first adding operation, add a constant that make a new resulting pixel value in $J$ larger than what we can represent in 8-bit unsigned integer so that is larger than 255. It would have overflow.
 
@@ -131,9 +123,9 @@ We have the quantization levels depending on what type of images we store. You m
 
 ### Images in Python and Scikit-Image
 
-***How do we do this manipulations in Python and using this Scikit-Image pack?***
+**_How do we do this manipulations in Python and using this Scikit-Image pack?_**
 
- The first thing to notice is that Scikit-Image uses the numpy arrays as the representation of the image. So once you've loaded an image in by Scikit-Image, what you get returned is a numpy array. `numpy.ndarrays`
+The first thing to notice is that Scikit-Image uses the numpy arrays as the representation of the image. So once you've loaded an image in by Scikit-Image, what you get returned is a numpy array. `numpy.ndarrays`
 
 That means you can all the operations that you can normally do on numpy arrays, you can also do that on this kind of image arrays. They are the same data structure.
 
@@ -143,7 +135,7 @@ That means you can all the operations that you can normally do on numpy arrays, 
 
   - Here is an example of adding a constant to all pixels
 
-    ``` py
+    ```py
     from skimage.io import imread
     I = imread('myimage.jpg')
     J = I + 50 # Adds 50 to all pixels in I
@@ -153,11 +145,11 @@ That means you can all the operations that you can normally do on numpy arrays, 
 
   - The data type of every pixel is stored in the attribute called dtype.
 
-+ Be careful what dtype your image has - when manipulating pixel values overflow and underflow may occur.
+* Be careful what dtype your image has - when manipulating pixel values overflow and underflow may occur.
 
-+ Handle this by clipping and type casting: => Method 1
+* Handle this by clipping and type casting: => Method 1
 
-  ``` python
+  ```python
   from skimage.io import imread
   I = imread('myimage.jpg') #dtype = unit8
   J = np.clip(I.astype('int16') + 50, 0, 255).astype('uint8')
@@ -169,9 +161,9 @@ That means you can all the operations that you can normally do on numpy arrays, 
 
   It takes some array that's given by the result of this evaluating this expression. And it also takes a range of values that I want to ensure that all elements of this result that they are clipped or put into this range. So here I say that whatever the values are here, they should fit in the range $0\to 255$. So, if I have a value that's bigger than 255, this value gets changed into 255. If I have a value that's less than 0. So it's a negative number, then it gets changed into 0. It doesn't do any clever scaling or anything it just cuts off values that are outside this range them into the limits of this range. Once I have done that, it's safe to convert this resulting array back ot 8 bit unsigned integer because we know that it can be stored in an unsigned 8 bit integer. So I use again this function to convert it back. So the result is that $J$ has the same shape as $I$, and has the same dtype.
 
-+ Or switch dtype, to floating point representation:
+* Or switch dtype, to floating point representation:
 
-  ``` python
+  ```python
   from skimage.io import imread
   from skimage import img_as_float
   I = img_as_float(imread('myimage.jpg'))
@@ -240,14 +232,11 @@ $$
 J (x, y) = c \ln [1 + (e^\alpha - 1)I(x, y)], \alpha > 0.
 $$
 
-
-Scale to output intensity range, e.g., 
-
+Scale to output intensity range, e.g.,
 
 $$
 c = \frac{255}{\ln [1 + \max (I(x, y))]}
 $$
-
 
 Stretch the lower intensities (dark) and compress the higher intensities (bright).
 
@@ -258,24 +247,22 @@ Use if you have an image with bright and dark regions and you are interested in 
 #### Exponential transform of intensities
 
 Stretch the dynamic range
+
 $$
 J (x, y) = c[(1+\alpha)^{I(x, y)} - 1], \alpha > 0.
 $$
+
 The opposite of lograithmic transform: Compress the dark pixels and stretch the bright pixels.
 
 <div align=center><img src="https://i.imgur.com/1AKzXDG.png" alt="image-20230212212240921" style="zoom:25%;" /><img src="https://i.imgur.com/IBvY89f.png" alt="image-20230212212419752" style="zoom:25%;" /></div>
-
-
 
 #### Power-law (Gamma) transform
 
 Compression and stretching of dynamic range
 
-
 $$
 J(x, y) = c[I(x, y)]^\gamma, \gamma > 0
 $$
-
 
 and $c$ chosen to map input dynamic range full output range.
 
@@ -286,7 +273,6 @@ Some other applications of gamma-correction:
 - Improve the raw signal from the CCD chip
 
 - Enhance intensities to fit display hardware
-
 
 $$
 J(x, y) = h(g(I(x, y)))
@@ -360,7 +346,7 @@ We already talked about obscure / pinhole camera.
 
 I showed you this illustration before you have light out in the real world that goes into the camera by a pinhole. We will refer to this as the **<u>aperture</u>** of our imaging device. In the optical case, we have all light travels through straight line goes through the pinhole and it goes into the camera and hits the back side of the camera. This back side will call the **<u>image plane</u>**. We have information out in 3D that gets predicted into this image plane. This is known as a **<u>perspective projection</u>**.
 
-You can have all the types of cameras where you don't have this perspective projection. => ***Orthogonal Projection***
+You can have all the types of cameras where you don't have this perspective projection. => **_Orthogonal Projection_**
 
 But in this course, we only talk about perspective projection and this is an idealized view of what is going on when we take pictures with a camera.
 
@@ -373,7 +359,7 @@ In the real camera, the pinhole is of some finite size and it's not just a point
 Perspective projection causes:
 
 - Foreshortening - the apparent size of objects depends on distance to viewer.
-- Convergence - Parallel lines meet in vanishing points. 
+- Convergence - Parallel lines meet in vanishing points.
 
 There are a lot of extra things to go with perspective projection. => Advanced courses for reconstructing 3D points what we see via camera.
 
@@ -405,7 +391,7 @@ The <u>size of the pinhole / aperture</u> has a smearing / blurring effect. So t
 
 A digital sensor (e.g., CCD chip) will smear / blur the image a bit due to the fact that <u>sensor cells are not infinitesimally small</u>.
 
-***If we want to form a mathematical model of an imaging system, we need to consider the effect of three factors above.*** And this will end up with a very central concept in signal processing called **<u>convolution</u>**.
+**_If we want to form a mathematical model of an imaging system, we need to consider the effect of three factors above._** And this will end up with a very central concept in signal processing called **<u>convolution</u>**.
 
 Convolution is a processing tool that performs changes to an image and generates new image. We can also use it as the machinery in image analysis.
 
@@ -427,7 +413,7 @@ We have some input light distribution $I$ which in reality is some distribution 
 
 We will for simplicity use a linear system as model. We think of it as a function that maps the distribution to another distribution.
 
-<u>An operator $S$ is linear, if $S\{aX+bY\}=aS\{X\} + bS\{Y\}$.</u> 
+<u>An operator $S$ is linear, if $S\{aX+bY\}=aS\{X\} + bS\{Y\}$.</u>
 
 This means, if I have two different light distributions $X$ and $Y$, two constants $a$ and $b$. Then, applying the imaging system by the operator $S$ to distribution $x$ and the distribution $Y$ Separately. Multiplying them by some constants $a$ and $b$ and adding together. This should give the same result as if I took the $x, y$ distributions multiplied by some constant $a$ and $b$ and added them together. Finally, applied my camera $S$ operator.
 
@@ -457,15 +443,15 @@ The process is that camera took the light source as an input, and then apply $S$
 
 As we take pictures, there are vaiours sources of noise and all depends on the type of camear or imaging system that you have.
 
-**Capture** 
+**Capture**
 
-+ It could be for instance, if you take an ordinary optical camera and take pictures, then there might be some fluctuations in the actual amount of light that you see out in the scene and that hits the optical system of the camera. In the end gives some variation. If you kept on taking pictures off the same scene with the camera, you will have small variations due to changes in the light. => **Variations in lighting**
+- It could be for instance, if you take an ordinary optical camera and take pictures, then there might be some fluctuations in the actual amount of light that you see out in the scene and that hits the optical system of the camera. In the end gives some variation. If you kept on taking pictures off the same scene with the camera, you will have small variations due to changes in the light. => **Variations in lighting**
 
-- If you take pictures out with a telescope up into space, the atmosphere also causes some noise. Cloud that on the way could be the noise. => **Atmospheric effects** so that can change the amount of light that hits camera.
+* If you take pictures out with a telescope up into space, the atmosphere also causes some noise. Cloud that on the way could be the noise. => **Atmospheric effects** so that can change the amount of light that hits camera.
 
-- Digital CCD chip is a piece of electronics and it's sensitive to things like **temperature**, **any electrical noise** that might come from the power source. => Cause some random fluctuations of the amount of light that is measured by the sensor.
+* Digital CCD chip is a piece of electronics and it's sensitive to things like **temperature**, **any electrical noise** that might come from the power source. => Cause some random fluctuations of the amount of light that is measured by the sensor.
 
-- Sensor non-uniformity, dust, vibrations, lens distortion, focus limitations, sensor saturation (too much light), underexposure (too little light).
+* Sensor non-uniformity, dust, vibrations, lens distortion, focus limitations, sensor saturation (too much light), underexposure (too little light).
 
 **Sampling**
 
@@ -543,28 +529,23 @@ But if we assume that the $PSF$ is position independent, then from the superposi
 
 So what we will assume is that $h$ does not directly depend on $x$ and $y$. There exists some $h$ function of two variables what we need is that we shift this $h$ function around to simulate the model $PSF$.
 
-
 $$
 h(x, y;x',y') = h(x-x', y-y')
 $$
 
-
-This simplifies the superposition integral to 
-
+This simplifies the superposition integral to
 
 $$
 g(x, y) = \int^{\infin}_{-\infin}\int^{\infin}_{-\infin}f(x', y')h(x-x',y-y')dx'dy'
 $$
 
-
 This is called the **<u>convolution integral</u>**.
 
 You will also see different notations for this because it's pretty difficult annoying to keep having to write out double integrals.
 
-Instead of writing double integral, we use 
+Instead of writing double integral, we use
 
 **2D**
-
 
 $$
 g(x, y) = \{f*h\}(x,y)
@@ -576,7 +557,7 @@ $$
 g(x) = \{ f*h \}(x)
 $$
 
-*****
+---
 
 $f*h \Leftrightarrow$ Apply convolution integral on the two function $f$ and $h$.
 
@@ -598,7 +579,7 @@ Haven't been taught right now.
 
 Let's consider a simplified imaging system where the camera is 1D or it's a line scanner. The input signal $f(x')$ is 1D.
 
-So $x'$ is the input space. We will consider the perfect camera case. This is the case where the aperture the pinhole is infinitely small. It's through a point or sensor, the centering element in our chip, this is also infinitely small. In this case, we have this idealized setup because here the $PSF$ and $h$ function for the $PSF$ becomes a $\delta$ function. In this case, we get an exact copy of the input. 
+So $x'$ is the input space. We will consider the perfect camera case. This is the case where the aperture the pinhole is infinitely small. It's through a point or sensor, the centering element in our chip, this is also infinitely small. In this case, we have this idealized setup because here the $PSF$ and $h$ function for the $PSF$ becomes a $\delta$ function. In this case, we get an exact copy of the input.
 
 <div align=center><img src="https://i.imgur.com/14i1N66.png" alt="image-20230213121226260" style="zoom:25%;" /></div>
 
@@ -614,11 +595,9 @@ Now we have this finite sensor as well and that we take whatever comes out of th
 
 We can definitely write our resulting image as below.
 
-
 $$
 I(x) = f(x')*h(x)*h_d(x)
 $$
-
 
 But we can combine these together and find a combined $h$ function that both models the finite aperture and the finite sensor size. We cam do this simply by convolving the two $h$ together prior to convolving wiht the input signal and in practice, it's pretty difficult to separate the different effects from each other.
 

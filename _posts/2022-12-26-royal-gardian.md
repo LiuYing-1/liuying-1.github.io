@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  Royal Guardian
+title: Royal Guardian
 date: 2022-12-26 02:22:35
 description: The shift of the royal guardian in Marmorkirken.
 tags: fun

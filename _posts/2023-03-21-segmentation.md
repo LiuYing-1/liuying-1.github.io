@@ -51,7 +51,7 @@ From FCN-8s, you can see that you very clearly get the horse and the rider. It d
 
 While SDS here, you can see that you get some of the horse, you get some of the rider, and you also get the cars, but it's not clear. So => It is not easy.
 
-----
+---
 
 The next example here you can see two motorbikes.
 
@@ -135,11 +135,11 @@ So, if we turn ourselves to a grayscale. If we just assume a simple thresholding
 
 You can see here that if there is a bias through the image, we have a problem right? Because then some of the foreground pixels as you can see here were falling into the intensity space of the background pixels.
 
-So what will happen is that we will have basically get a misclassfication over here. 
+So what will happen is that we will have basically get a misclassfication over here.
 
-A way to get rid of this is simply using some of the methodology that you already know. 
+A way to get rid of this is simply using some of the methodology that you already know.
 
-I will rectify the image, that is basically model this distortion like you see, so that the intensity of the different levels are leveled. In this case, you are interested in the background and foreground. 
+I will rectify the image, that is basically model this distortion like you see, so that the intensity of the different levels are leveled. In this case, you are interested in the background and foreground.
 
 And you can use that to sort of estimate a function that will intensity correct the image so that you have a uniform intensity distribution.
 
@@ -149,7 +149,7 @@ If you do that, you will end up with examples more like this.
 
 But what you can see from this is that, if this is your image, and you blur it. You can see here that you have two distinct peaks which is the background here where the intensities are zero. And you can see here you have the foreground which are very distinct and then you need to choose some sort of threshold in between here.
 
-When you select this, it has an effect. So in this case, due to the blurring, you get rounded corners. The objects become smaller and smaller if you go to the right part to choose $\tau$, while if you go to the left part, the objects become larger and larger but it will not sort of reflect the real size. 
+When you select this, it has an effect. So in this case, due to the blurring, you get rounded corners. The objects become smaller and smaller if you go to the right part to choose $\tau$, while if you go to the left part, the objects become larger and larger but it will not sort of reflect the real size.
 
 So this is one of the basic problems with intensity based and this is of course based on the resolution of different images.
 
@@ -205,7 +205,7 @@ This is actually in fact an implicit function so it's positive inside and negati
 
 <div align=center><img src="https://i.imgur.com/GSTfAau.png" alt="image-20230321134734510" style="zoom: 33%;" /></div>
 
-***Active contour is the predecessor of Chan-Vese method.***
+**_Active contour is the predecessor of Chan-Vese method._**
 
 <div align=center><img src="https://i.imgur.com/35iV3Vf.png" alt="image-20230321134840903" style="zoom:50%;" /></div>
 
@@ -253,13 +253,13 @@ So, in practice, what is done is similar to what is up (previous example) here w
 
 **Steps to do Hough Transformation**
 
-***Step 1***: Edge detection
+**_Step 1_**: Edge detection
 
-***Step 2***: Then you need to decide on the number of angles $(ntheta)$ and distances $nd$. So basically parameterize your Hough space. Create accumulator image $H[ntheta, nd]$.
+**_Step 2_**: Then you need to decide on the number of angles $(ntheta)$ and distances $nd$. So basically parameterize your Hough space. Create accumulator image $H[ntheta, nd]$.
 
-***Step 3***: And then you simply start voting for each edge and theta calculate $d$ and increment $(theta, d)$ pixel in accumulator.
+**_Step 3_**: And then you simply start voting for each edge and theta calculate $d$ and increment $(theta, d)$ pixel in accumulator.
 
-So at the end, ***you find peaks in accumulator image.***
+So at the end, **_you find peaks in accumulator image._**
 
 ### Circle
 
@@ -269,17 +269,15 @@ So at the end, ***you find peaks in accumulator image.***
 
 So, here you extract boundaries of the coins using an edge filter. So you get these here. For instance, you can parameterise this by the distance to the center and the size of the circle.
 
-### Segmentation Evaluation 
+### Segmentation Evaluation
 
-***Once you have a segmentation, how do we actually evaluate it in this case?***
+**_Once you have a segmentation, how do we actually evaluate it in this case?_**
 
-***Dice Measure***
-
+**_Dice Measure_**
 
 $$
 Dice (A, B) = 2 * |A\cap B|/(|A| + |B|)
 $$
-
 
 The overlap between $A$ and $B$. How well do they overlap?
 
@@ -291,7 +289,7 @@ The segmentation we would have the full image would be the $X$ image, $Y$ is the
 
 If it's a patch-based segmentation, it would be a patch of an image and $Y$ could be the class of center of that pixel.
 
-### Supervised Learning 
+### Supervised Learning
 
 <div align=center><img src="https://i.imgur.com/dSVUZYM.png" alt="image-20230321152153638" style="zoom: 25%;" /></div>
 

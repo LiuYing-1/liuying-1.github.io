@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  Godt Nytår
+title: Godt Nytår
 date: 2022-12-29 23:37:37
 description: The blog is to record my first New Year's Eve in Denmark!
 tags: fun

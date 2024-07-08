@@ -28,17 +28,17 @@ authors:
 
 # Why study (big) computer systems?
 
-"*How can I program large systems with clean interfaces and high performance?* "
+"_How can I program large systems with clean interfaces and high performance?_ "
 
 <div align=right><I>Microsoft/Oracle</I></div>
 
-*"How do I build systems to process TBs to PBs of data?"*
+_"How do I build systems to process TBs to PBs of data?"_
 
 1TB = 1000GB, 1PB = 1000TB
 
 <div align=right><I>Cloudera/Teradata</I></div>
 
-*"How can I understand the guarantees and reliability of scalable services offered to me on the cloud?"* 
+_"How can I understand the guarantees and reliability of scalable services offered to me on the cloud?"_
 
 How to ensure I am accessing my data, instead of others?
 
@@ -54,9 +54,9 @@ According to the data in 2007, there is an increasing number of users and mounta
 
 <b>Knowledge</b>
 
-Describe the *design of transactional and distributed systems,* including techniques for *modularity*, *performance*, and *fault tolerance*.
+Describe the _design of transactional and distributed systems,_ including techniques for _modularity_, _performance_, and _fault tolerance_.
 
-Explain how to *employ strong modularity through a client-service abstraction* as a paradigm to structure computer systems, while *hiding the complexity of implementation from clients*. 
+Explain how to _employ strong modularity through a client-service abstraction_ as a paradigm to structure computer systems, while _hiding the complexity of implementation from clients_.
 
 - By implementing this, strong modularity will prevent the entire system down when a failure happens in a module or a component. How to achieve this principle by using client-service abstraction. Hide the complexity from the abstraction.
 
@@ -64,15 +64,15 @@ Explain techniques for large-scale data processing.
 
 <b>Skills</b>
 
-Implement systems that include <u>*mechanisms for modularity, atomicity, and fault tolerance*</u>.
+Implement systems that include <u>_mechanisms for modularity, atomicity, and fault tolerance_</u>.
 
-Structure and conduct experiments to *evaluate a system's performance*.
+Structure and conduct experiments to _evaluate a system's performance_.
 
 <b>Competences</b>
 
-Discuss *design alternatives for a modular computer system*, identifying *desired system properties* as well as *describing mechanisms for improving performance* while arguing for their correctness.
+Discuss _design alternatives for a modular computer system_, identifying _desired system properties_ as well as _describing mechanisms for improving performance_ while arguing for their correctness.
 
-Analyze *protocols for concurrency control and recovery,* as well as for distribution and replication.
+Analyze _protocols for concurrency control and recovery,_ as well as for distribution and replication.
 
 Apply principles of large-scale data processing to analyze concrete information-processing problems. (Realize and build a model for addressing the future problem.)
 
@@ -80,46 +80,45 @@ Apply principles of large-scale data processing to analyze concrete information-
 
 **Topic 1:** Strong Modularity
 
-+ **Fundamentals** that build a system from the fundamentals. The property is **Strong Modularity**.
+- **Fundamentals** that build a system from the fundamentals. The property is **Strong Modularity**.
   1. Abstractions: interpreters, memory, communication links. => Any large-scale systems that are built starting from the 3 fundamentals. They interacted with each other.
   2. Modularity with clients and services, RPC => Remote procedure calls
   3. Techniques for performance, e.g., concurrency, fast paths, dallying, batching, speculation
 
-Strong modularity means ***building systems from components where the value of one component does not influence the rest of the system or does not severely influence the rest of the system*** maybe. Which has been mentioned above.
+Strong modularity means **_building systems from components where the value of one component does not influence the rest of the system or does not severely influence the rest of the system_** maybe. Which has been mentioned above.
 
 **Topic 2** Atomicity, Isolation, and Durability
 
-+ Concurrency control and recovery 
+- Concurrency control and recovery
 
   One way to implement memory abstraction as is done is in large-scale database management systems. And they are about to achieve certain properties for this memory abstraction mainly atomicity isolation and durability. And the techniques to achieve them are concurrency control and recovery.
 
   Properties: **Atomicity, Isolation, and Durability**.
 
-+ Experimental design (Not the key points in this course)
+- Experimental design (Not the key points in this course)
 
   1. Performance metrics, workloads
   2. Structuring and conducting simple experiments
 
-**Topic 3** High Availability 
+**Topic 3** High Availability
 
-+ Reliability & Distribution
+- Reliability & Distribution
 
   Reliability means how we make sure if our system is built from a lot of components and the components I expected to fail. What are the best strategies to ensure that the system overall is available and achieves its goals?
 
-+ Communication
+- Communication
 
-+ Property: High Availability => we want our systems to be online all the time and the service should not be interrupted by a failure of small components.
+- Property: High Availability => we want our systems to be online all the time and the service should not be interrupted by a failure of small components.
 
 **Topic 4** Scalability with Data Size
 
-+ Data processing
+- Data processing
 
   More about algorithms and how to improve the performance with algorithms that implement parallelism.
 
-+ Property: Scalability with Data Size
+- Property: Scalability with Data Size
 
 <hr>
-
 
 ### What should we learn today?
 
@@ -147,9 +146,9 @@ When introducing an abstraction, we will have a barrier between two components, 
 
 **Memory abstraction** `(Read/Write)`
 
-A memory abstraction is something that allows you to read values and write values. 
+A memory abstraction is something that allows you to read values and write values.
 
-**Interpreters abstraction**  `(loop(print(eval(read))))`
+**Interpreters abstraction** `(loop(print(eval(read))))`
 
 Have a set of commands that you can execute and the interpreter's input instructions from somewhere else. They evaluate the instructions and print some output and continue this in a loop.
 
@@ -157,25 +156,25 @@ Have a set of commands that you can execute and the interpreter's input instruct
 
 It can be async and we don't wait for the response or something like that.
 
-**Names** make connections (glue) between these abstractions. Where do we read from or where do we write to? It can be any kind of format, e.g., addresses, IP addresses, web addresses, filenames, emails, telephone numbers, and so on. 
+**Names** make connections (glue) between these abstractions. Where do we read from or where do we write to? It can be any kind of format, e.g., addresses, IP addresses, web addresses, filenames, emails, telephone numbers, and so on.
 
 Sometimes, we call a name an address if it has some location information. **Address is an overloaded name with location info. (e.g., LOAD 1742, R1)**. The rest of the names require a mapping scheme to translate the original info into a fixed location. For example, a website is commonly associated with an IP address, and so on.
 
 #### Name Mapping
 
-**How can we map names?** 
+**How can we map names?**
 
-We usually have some algorithms that take as input the names and some contexts and produce the addresses. 
+We usually have some algorithms that take as input the names and some contexts and produce the addresses.
 
-***Type 1: Table lookup*** *Files inside directories.*
+**_Type 1: Table lookup_** _Files inside directories._
 
-Typically, there will be something like a table lookup first so you could look up a file inside of a directory by taking the file name depending on the file system you are using, the precise lookup may look differently, but in practice, it translates to a table lookup or you can contact the DNS service to resolve the web address to an IP address. All these are called table lookups. 
+Typically, there will be something like a table lookup first so you could look up a file inside of a directory by taking the file name depending on the file system you are using, the precise lookup may look differently, but in practice, it translates to a table lookup or you can contact the DNS service to resolve the web address to an IP address. All these are called table lookups.
 
-***Type 2: Recursive lookup*** *Path names in file systems or URLs*
+**_Type 2: Recursive lookup_** _Path names in file systems or URLs_
 
 There might be some names structured with `/`, just like URLs, web addresses, or file paths. We need the recursive lookup or combine it with the table lookup to get to the location we are interested in.
 
-***Type 3: Multiple lookup*** *Java class loading*
+**_Type 3: Multiple lookup_** _Java class loading_
 
 When we code `Overloading` with Java, we might call a method in Java. This can be long multiple classes and you try to find or Java tries to find the best matching instance of the class to pick the implementation of the method you're interested in. It is based on the types of objects involved.
 
@@ -189,9 +188,9 @@ When we code `Overloading` with Java, we might call a method in Java. This can b
 
 **Examples of Memory**
 
-*Physical memory is limited to the size of the RAM chip, virtual memory is limited by the size of the hard disk.*
+_Physical memory is limited to the size of the RAM chip, virtual memory is limited by the size of the hard disk._
 
-*RAM stores virtual addresses, while the disk stores physical addresses.*
+_RAM stores virtual addresses, while the disk stores physical addresses._
 
 Typically, when we are writing to the physical memory and our computer, we are using a physical address but typically we don't address the RAM directly. But we work with a multi-level memory hierarchy that goes from memory that we can access quickly like the RAM.
 
@@ -215,7 +214,7 @@ RAM is extremely expensive and it is volatile, but its speed is fast. While the 
 3. Use RAM efficiently to provide for low latency (on average)
 4. Neither disk nor memory directly exposed, only `READ/WRITE` API.
 
-*What does it mean to implement an abstraction? - What we need to do is implement the read and write functions and hide the two-level hierarcy to the users*.
+_What does it mean to implement an abstraction? - What we need to do is implement the read and write functions and hide the two-level hierarcy to the users_.
 
 ---
 
@@ -229,7 +228,7 @@ This is principal right, but an advanced version with smart data structures is b
 
 We have two address spaces, we have the addresses on the disk and addresses on the RAM. We need to bridge the gap between the two. So we introduce the naming scheme that operates with addresses of disk + RAM. So those are the virtual addresses and they give us as many addresses as we can access with the extraction. And we need to have something that translates these virtual addresses into concrete physical addresses. This could be a disk address or memory address. So the page map for example will have the virtual address, the page identifier and that will translate to the block number. Maybe on the disk first time I saw the block number memory. Let's start with that.
 
-RAM stores most recently used pages and page map. ***Resident bit (R):*** access to non-resident pages results in page faults. ***Page fault***:an indirection exception for missing pages. 
+RAM stores most recently used pages and page map. **_Resident bit (R):_** access to non-resident pages results in page faults. **_Page fault_**:an indirection exception for missing pages.
 
 <div align=center>
   <div class="row mt-3">
@@ -244,7 +243,7 @@ RAM stores most recently used pages and page map. ***Resident bit (R):*** access
 
 Trap to OS handler and handler loads block from disk and updates mapping. If memory full, must choose some victim block for replacement. Page replacement algorithm, e.g., LRU.
 
-Other metadata: ***Dirty bit (D):*** Only write page back when it has changed! Pin bit (p): do not remove certain pages (e.g., code of OS handler itself)
+Other metadata: **_Dirty bit (D):_** Only write page back when it has changed! Pin bit (p): do not remove certain pages (e.g., code of OS handler itself)
 
 **Answer**
 
@@ -258,11 +257,11 @@ Abstraction: Do we have any guarantees on two concurrent threads writing to the 
 
 Performance: Do we get average latency close to RAM latency?
 
-+ Yes. LRU strategy should give us the average latency that is close to RAM.
+- Yes. LRU strategy should give us the average latency that is close to RAM.
 
 Fault-Tolerance: What happens on failure? Do we have any guarantees about the state that is on the disk?
 
-+ Depends on the data. If the fault happens in the disk, there might be only one page lost. However, if the electricity is running out, all the data stored in the RAM will lose.
+- Depends on the data. If the fault happens in the disk, there might be only one page lost. However, if the electricity is running out, all the data stored in the RAM will lose.
 
 #### Interpreters Abstraction
 
@@ -277,4 +276,3 @@ Examples of Communication Links
 **Other useful abstractions**
 
 Sychornization, data processing
-

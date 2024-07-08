@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  Easter Lunch
+title: Easter Lunch
 date: 2023-04-23 14:57:21
 description: This is the first time to have lunch with my Danish family at Easter.
 tags: fun
@@ -25,4 +25,3 @@ Today, I had the pleasure of spending Easter lunch with my Danish family. We ind
 </div>
 
 As the day progressed, we shared in some lively dancing and singing, which made the atmosphere even more festive and enjoyable. It was truly a wonderful and cozy day spent with loved ones.
-

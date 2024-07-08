@@ -1,12 +1,12 @@
 ---
 layout: post
-title:  Advanced Image Registration
+title: Advanced Image Registration
 date: 2023-10-10 08:00:00
 description: Self-learning note for advanced image registration.
 tags: mia
 categories: study ucph
 related_posts: true
-toc: 
+toc:
   sidebar: left
 giscus_comments: true
 thumbnail: assets/img/advanced-image-registration.png
@@ -64,7 +64,7 @@ The goal of image registration is to **find a transformation** that can **map or
 
 **Deformed Moving** in the context of image registration means that the **"moving" image, which was originally not aligned with the "fixed" image**, has undergone a deformation or transformation to achieve spatial alignment with the fixed image. This term indicates that **the moving image has been modified or adjusted to fit or match the spatial characteristics of the fixed image**. Deforming the moving image is a key step in the registration process, where the transformation is applied to bring the two images into spatial concordance.
 
-Here we have an example, 
+Here we have an example,
 
 <div align=center>
 <div class="row mt-3">
@@ -90,11 +90,11 @@ Here is the **deformed moving** image.
   Figure 2. Deformed moving image
 </div>
 
-***Is this a good transformation field?***
+**_Is this a good transformation field?_**
 
 **Definitely not**. There are a lot of **strange internal distortions**. The transformation field might not be ideal or that the registration process did not achieve the desired result.
 
-***Solution***
+**_Solution_**
 
 **Regularization**
 
@@ -146,23 +146,23 @@ Overall, this concept is fundamental in regularization during image registration
 
 **Original optimization formulation:**
 
-
 $$
 F(I, J, \theta) = \min\sum_{i, j}d\left(I(i, j) - J(x(i,j,\theta), y(i, j, \theta))\right)
 $$
+
 **Formulation with regularization:**
 
-
 $$
-F(I, J, \theta) = \min\left(\sum_{i, j}d(I(i, j) - J(x(i, j, \theta), y(i, j, \theta))\right) \\ 
+F(I, J, \theta) = \min\left(\sum_{i, j}d(I(i, j) - J(x(i, j, \theta), y(i, j, \theta))\right) \\
 + \lambda\sum_{i,j}\sum_{k, l\in\Omega_{i, j}}\left(((i-k)\ - (x(i, j, \theta) - x(k, l, \theta))\right)^2
 $$
-We add a regularization term to **give a penalty**. And what will this regularization do?
 
+We add a regularization term to **give a penalty**. And what will this regularization do?
 
 $$
 \sum_{i, j} \sum_{k.l\in\Omega_{i, j}}(\left(1-sign\left((i-k)\cdot(x(i, j, \theta) - x(k, l, \theta))\right)\right) + \left(1-sign\left((j-l)\cdot(y(i, j, \theta)-y(k, l, \theta))\right)\right))
 $$
+
 This regularization term is used to **<u>encourage the preservation of distances or relationships</u>** between neighboring points in the image grid during the registration process. It **<u>penalizes situations</u>** where the **<u>distances between points change significantly</u>** as a result of the deformation caused by the transformation parameter $\theta$.
 
 The term 1−sign(…) essentially **<u>imposes a penalty</u>** when the transformation causes **<u>significant changes in the spatial relationships between points</u>**. This encourages the registration process to **<u>produce a deformation that maintains the local structure and spatial characteristics of the image</u>**.
@@ -244,6 +244,7 @@ The use of landmarks is a common technique in image registration, and it's parti
   - Multi-resolution pyramid, grid schedule
   - Regularization
 - **Prepare input images**
+
   - Normalization of intensities
   - Rescaling
 

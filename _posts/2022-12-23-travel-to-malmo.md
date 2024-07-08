@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  Travel to Malmö
+title: Travel to Malmö
 date: 2022-12-23 17:07:52
 description: This is the final version of the image preprocessing with the limitation that cannot automatically crop the image in the center. However, it can work properly in normal situations. Also, this blog is used to record my trip to Malmö, Sweden with Xuanlang.
 tags: fun

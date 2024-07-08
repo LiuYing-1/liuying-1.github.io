@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  Start My Blog
+title: Start My Blog
 date: 2022-11-17 21:57:21
 description: Memorize the start of the implementation of my blog-web.
 tags: fun

@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  AADS Grade
+title: AADS Grade
 date: 2023-01-29 00:26:04
 featured: true
 description: This is to record I got 12 on the course Advanced Algorithms and Data Structures.
@@ -125,7 +125,6 @@ Process of Practices:
 <div class="caption">
     Video 9. Practice Recording for Randomized Algorithms
 </div>
-
 
 **Exam Notes**
 

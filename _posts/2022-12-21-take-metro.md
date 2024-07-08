@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  Take Metro
+title: Take Metro
 date: 2022-12-21 05:32:46
 description: This blog is to record my route from DIKU back to my dorm at 00:53 am several days ago.
 tags: fun
@@ -17,4 +17,3 @@ thumbnail: assets/img/take-metro.jpg
 </div>
 
 That day, my study group tried our best to finish the assignments for the course Advanced Algorithms and Data Structures. After we had done most of it, I went home by taking the metro from Vibenhus Runddel to Islands Brygge.
-

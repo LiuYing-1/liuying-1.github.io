@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  Chef First Time
+title: Chef First Time
 date: 2022-12-24 00:17:11
 description: This is my first time being the chef to cook for my danish family!
 tags: fun

@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  Graduation
+title: Graduation
 date: 2024-06-28 10:15:00
 featured: true
 description: Congratulations to my graduation from the DIKU, University of Copenhagen.
@@ -32,4 +32,4 @@ The title of my thesis is "Exploration of Self-Supervised Learning Methods for L
 
 I am grateful for the support and guidance from my supervisor, friends, and family, along the way. Thank you to everyone who has been a part of this journey with me. 🎓🎉
 
-Additionally, I am very excited to share the news that I am going to work as an AI engineer in a company, to embark on the next chapter of my life and look forward to new opportunities and challenges. 🚀 
+Additionally, I am very excited to share the news that I am going to work as an AI engineer in a company, to embark on the next chapter of my life and look forward to new opportunities and challenges. 🚀

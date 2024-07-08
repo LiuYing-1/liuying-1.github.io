@@ -1,12 +1,12 @@
 ---
 layout: post
-title:  Inpainting
+title: Inpainting
 date: 2023-09-19 08:00:00
 description: Learning note for inpainting.
 tags: ssl
 categories: study ucph
 related_posts: true
-toc: 
+toc:
   sidebar: left
 giscus_comments: false
 thumbnail: assets/img/inpainting.jpg
@@ -23,9 +23,9 @@ Inpainting, as known as **predict missing pixels**.
   Figure 1. Context Encoders: Feature Learning by Inpainting (Pathak et al., 2016)
 </div>
 
-***Disclaimer: Below are the extraction from the original paper.*** It will be reposted once I finished read all of them when I am available.
+**_Disclaimer: Below are the extraction from the original paper._** It will be reposted once I finished read all of them when I am available.
 
-***Reference: Context Encoders: Feature Learning by Inpainting***
+**_Reference: Context Encoders: Feature Learning by Inpainting_**
 
 ---
 
@@ -41,7 +41,7 @@ When training context encoders, we have experimented with both **a standard pixe
 
 The **latter produces much sharper results** because it can **better handle multiple modes** in the output.
 
-A context encoder learns **a representation that captures not just appearance** but also the **semantics of visual structures**. ==> *Question*
+A context encoder learns **a representation that captures not just appearance** but also the **semantics of visual structures**. ==> _Question_
 
 Context encoders can be used for **semantic inpainting tasks**, either **stand-alone** or **as initialization for non-parametric methods**.
 
@@ -66,7 +66,7 @@ This ability comes from the fact that **natural images, despite their diversity,
 
 In this paper, we show that **it is possible to learn and predict this structure** using **convolutional neural networks** (CNNs), a class of models that have recently shown success across a variety of **image understanding tasks**.
 
-Given **an image with a missing region**, we train a convolutional neural network to **regress to the missing pixel values**. *Question*
+Given **an image with a missing region**, we train a convolutional neural network to **regress to the missing pixel values**. _Question_
 
 We call our model **context encoder**, as it consists of **an encoder capturing the context of an image into a compact latent feature representation** and **a decoder which uses that representation to produce the missing image content**.
 
@@ -102,11 +102,11 @@ In the context of denoising autoencoders, the idea is that **the noise or distor
 
 ---
 
-In contrast, our context encoder needs to solve **<u>a much harder task</u>**: **<u>to fill in large missing areas of the image, where it can't get "hints" from nearby pixels.</u>** 
+In contrast, our context encoder needs to solve **<u>a much harder task</u>**: **<u>to fill in large missing areas of the image, where it can't get "hints" from nearby pixels.</u>**
 
 This requires **a much deeper semantic understanding of the scene**, and the **ability to synthesize high-level features over large spatial extents**.
 
-For example, an entire window needs to be **conjured up "out of thin air"** in Figure 2 above. 
+For example, an entire window needs to be **conjured up "out of thin air"** in Figure 2 above.
 
 This is similar in spirit to wrd2vec which **<u>learns word representation from natural language sentences by predicting a word given its context</u>**.
 
@@ -127,7 +127,7 @@ So, the overall strategy described here is to **simultaneously train context enc
 
 Figure 2 shows that using only the **reconstruction loss produces blurry results**, whereas **adding the adversarial loss results in much sharper predictions**.
 
-**<u>Evaluate the encoder and the decoder independently.</u>** 
+**<u>Evaluate the encoder and the decoder independently.</u>**
 
 On the encoder, we show that **encoding** just the **context of an image patch** and using the **resulting feature** to **retrieve nearest neighbor contexts from a dataset** produces patches which are semantically similar to the original (unseen) patch.
 
@@ -138,7 +138,7 @@ On the encoder, we show that **encoding** just the **context of an image patch**
 
 We further validate the quality of the learned feature representation by fine-tuning the encoder for a variety of image understanding tasks, including classfication, object detection, and semantic segmentation.
 
-We are competitive with the state-of-the-art unsupervised/self-supervised methods on those tasks. 
+We are competitive with the state-of-the-art unsupervised/self-supervised methods on those tasks.
 
 On the decoder side, we **show that our method is often able to fill in realistic image content**.
 
@@ -162,12 +162,10 @@ We briefly review the related work in each of the sub-fields pertaining to this 
 
 Very recently, there has been significant interesting in learning meaningful representations using weakly-supervised and self-supervised learning. One useful source of supervision is to **use the temporal information** contained in videos. **Consistency across temporal frames** has been used as supervision to learn embeddings which perform well on a number of tasks. Another way to use consistency is to track patches in frames of video containing task-relevant attributes and use the coherence of tracked patches to guide the training.
 
-Most closely related to the present paper are efforts at **exploiting spatial context as a source of free and plentiful supervisory signal**. Recently, Doersch et al. used the task of **predicting the relative positions of neighboring patches within an image** as a way to train an unsupervised deep feature representations. 
+Most closely related to the present paper are efforts at **exploiting spatial context as a source of free and plentiful supervisory signal**. Recently, Doersch et al. used the task of **predicting the relative positions of neighboring patches within an image** as a way to train an unsupervised deep feature representations.
 
 Our context encoder solves **a pure prediction problem** (what pixel intensities should go in the hole?).
 
 In contrast, **context encoders can be applied to any unlabeled image database** and **learn to generate images based on the surrounding context**.
-
-
 
 The later part in the article is not that related to my interests. I will repost this blog as soon as possible to form my own interpretation focus on the technique, **inpainting**.

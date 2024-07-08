@@ -41,9 +41,9 @@ We have this blue image here, now, if we try to compute derivatives as we've don
 
 <div style="font-family:'noto serif sc'">拉普拉斯锐化图像是根据图像某个像素的周围像素到此像素的突变程度有关，也就是说它的依据是图像像素的变化程度。我们知道，一个函数的一阶微分描述了函数图像是朝哪里变化的，即增长或者降低；而二阶微分描述的则是图像变化的速度，急剧增长下降还是平缓的增长下降。那么据此我们可以猜测出依据二阶微分能够找到图像的色素的过渡程度，例如白色到黑色的过渡就是比较急剧的。或者用官方点的话说：当邻域中心像素灰度低于它所在的领域内其它像素的平均灰度时，此中心像素的灰度应被进一步降低，当邻域中心像素灰度高于它所在的邻域内其它像素的平均灰度时，此中心像素的灰度应被进一步提高，以此实现图像的锐化处理。应用：运用拉普拉斯可以增强图像的细节，找到图像的边缘。但是有时候会把噪音也给增强了，那么可以在锐化前对图像进行平滑处理。</div>
 
-I could have chosen something different from the same value as the sigma but we will just use this. So we get the yellow line. If we want to do **edge detection**, we could look for **local maximum of this first order derivative**, but that is not we are interested here. => *First order derivative is used for edge detection*
+I could have chosen something different from the same value as the sigma but we will just use this. So we get the yellow line. If we want to do **edge detection**, we could look for **local maximum of this first order derivative**, but that is not we are interested here. => _First order derivative is used for edge detection_
 
-If we consider the second derivative, scale normalized, in this case we have to multiply by $\tau^2$, then we get this green curve here. 
+If we consider the second derivative, scale normalized, in this case we have to multiply by $\tau^2$, then we get this green curve here.
 
 <div align=center><img src="https://i.imgur.com/5z9I0Rt.png" alt="image-20230307140219382" style="zoom: 30%;" /></div>
 
@@ -53,15 +53,13 @@ We can image that we take the blue curve subtract the green curve, we will be lo
 
 <div align=center><img src="https://i.imgur.com/Vf0ZVrJ.png" alt="image-20230307141500386" style="zoom: 30%;" /></div>
 
-The red curve is now that I have taking the original image, the blue curve subtracted the scale normalized second derivative. 
-
+The red curve is now that I have taking the original image, the blue curve subtracted the scale normalized second derivative.
 
 $$
 Red = Blue - Green \implies (Res = Original - Laplacian)
 $$
 
-
-We can see that if we ignore this bump here, we can see the slope of the red curve is now larger than the blue curve, so we have achieved some form of sharpening. 
+We can see that if we ignore this bump here, we can see the slope of the red curve is now larger than the blue curve, so we have achieved some form of sharpening.
 
 However, apparently also comes at a cost where we get some **artifacts** out here at this region (red outer parts) and similar down here where the edge starts and ends.
 
@@ -71,7 +69,7 @@ But this gragh is basically the intiituion of what this Laplacian image sharpeni
 
 #### General Algorithm
 
-To formulate it in more general for images, we have image $I$, and what we do is we compute the Laplacian response image $\sigma^2\nabla^2L(x, y: \sigma)$ with scale normalization. 
+To formulate it in more general for images, we have image $I$, and what we do is we compute the Laplacian response image $\sigma^2\nabla^2L(x, y: \sigma)$ with scale normalization.
 
 We need the mormalization because if we don't do this, the green curve will be very low during the substraction, if we choose a high tau, which would mean that it doesn't really have any effect. So we are in this situation where we actually need to be able to compare an image at two different scales. In this case, it's the original scale of the blue curve which we know here by construction that it's 10 and we compare that with the scale that we use to measure the illustration which in this case was tau = 10. And in order to do this in a fair manner, we need to normalize the derivatives.
 
@@ -79,17 +77,15 @@ We need the mormalization because if we don't do this, the green curve will be v
 
 In general, we can produce a sharpened version of the input image $I(x, y)$ by subtracting the Laplacian response image
 
-
 $$
 J_{sharp}(x, y) = I(x, y) - \sigma^2\nabla^2L(x, y;\sigma)
 $$
-
 
 with $L(x, y; \sigma) = (I * G)(x, y; \sigma)$ and $\nabla^2L = \partial^2L/\partial x^2 + \partial ^2 L/\partial y^2$.
 
 Note: We can use discrete Laplacian filters as described in G&W or the scale normalized Laplacian of Gaussian filter.
 
-The note says we can leave out the scale normalization because then sigma would roughly be equal to 1 except if we use very large filters here. 
+The note says we can leave out the scale normalization because then sigma would roughly be equal to 1 except if we use very large filters here.
 
 <div style="font-family:'Noto Serif SC'">如果我们的filters不大，那么一般我们可以直接忽略归一化。默认为 sigma = 1。但是教授还是推荐用后者，归一化的拉普拉斯高斯算子。</div>
 
@@ -103,11 +99,11 @@ Here I have a blurred image with a Gaussian filter with the sigma equal to 1, an
 
 <div align=center><img src="https://i.imgur.com/necjm6z.png" alt="image-20230307163012880" style="zoom:30%;" /></div>
 
-The third one is the resulting image of the Laplacian with scale normalized. 
+The third one is the resulting image of the Laplacian with scale normalized.
 
 So we take the original image do the subtraction with the third one, then, we get the sharpened image. => Second
 
-If looking carefully, the scarf and cheek actually look like the edges they are getting more crisp and sharp. 
+If looking carefully, the scarf and cheek actually look like the edges they are getting more crisp and sharp.
 
 #### Intepretation - Scale Space
 
@@ -121,11 +117,11 @@ It enhances noise.
 
 Unfortunately, Laplacian image sharpening will have a tendency of boosting any noise that would be in the image.
 
-Here I took again the toy image blurred by gaussian of sigma equal to 1 **<u>and I also added some Gaussian noise</u>** to each of the pixels not much, but enough that you can visually see this. Then we can see that in the Laplacian image, the noise appears to be boosted. This also means that the sharpened version of the original image also becomes noisier. 
+Here I took again the toy image blurred by gaussian of sigma equal to 1 **<u>and I also added some Gaussian noise</u>** to each of the pixels not much, but enough that you can visually see this. Then we can see that in the Laplacian image, the noise appears to be boosted. This also means that the sharpened version of the original image also becomes noisier.
 
 Basically, what happens is that, the noise accidentally gets enhanced. And we already know why this is.
 
-If you recall from a previous lecture where we discussed the differential filters and the sensitivity to noise. If we have a noisy signal, it doesn't actually have to be that much noise. Then, its result gets amplified or enhanced by taking derivatives and this has to do with the thing that we in fact are subtracting two noisy pixels from each other which is the same thing as adding up noise. 
+If you recall from a previous lecture where we discussed the differential filters and the sensitivity to noise. If we have a noisy signal, it doesn't actually have to be that much noise. Then, its result gets amplified or enhanced by taking derivatives and this has to do with the thing that we in fact are subtracting two noisy pixels from each other which is the same thing as adding up noise.
 
 Unfortunately, when the differentiation order increases, this effect gets worse and worse. And now we are considering this a second-order derivative in Laplacian image sharpening. This means that it becomes more dominant than if we had done something that would involve the first derivative. => <font face="Noto Serif SC">拉普拉斯作为二阶比一阶受噪声影响更大。</font>
 
@@ -133,13 +129,13 @@ Unfortunately, when the differentiation order increases, this effect gets worse 
 
 ### Deconvolution - The Fourier transform approach
 
-In the rest of this lecture, we will consider the problem of image restoration by deconvolution and in fact, there are different approaches to solving this problem. But we will consider approaches that use the Fourier transformation as the way to define the algorithm. 
+In the rest of this lecture, we will consider the problem of image restoration by deconvolution and in fact, there are different approaches to solving this problem. But we will consider approaches that use the Fourier transformation as the way to define the algorithm.
 
 #### Image degradation model
 
 **What problem do we want to solve?**
 
-But first of all, we need to come up with a model of what we mean by degraded image. 
+But first of all, we need to come up with a model of what we mean by degraded image.
 
 So, basically defined, what is the problem?
 
@@ -161,11 +157,9 @@ So what we are actually observing is $g$, a degraded image that is undergone som
 
 To be more precise, the general model,
 
-
 $$
 g(x, y) = h[f(x, y)] + n(x, y)
 $$
-
 
 Where $h$ is a **degradation operator** and $n$ is an **additive noise source**.
 
@@ -175,9 +169,7 @@ $$
 I = PSF(F) + N
 $$
 
-
-
-***The most important part here is that, I do not observe $f$ directly, I only observe $g$.***
+**_The most important part here is that, I do not observe $f$ directly, I only observe $g$._**
 
 Our problem is then to come up with algorithms that can **restore** $f$ or at least approximate $f$ as close as possible.
 
@@ -191,13 +183,11 @@ We have a model of the process that we believe that $g$ has undergone, and then 
 
 If we assume that the degradation operator $h$ is position independent (shift invariant) and linear, we get the **linear shift invariant degradation model**
 
-
 $$
 g(x, y) = (h * f)(x, y) + n(x, y)
 $$
 
-
-where $h(x, y)$ is the **point spread function (PSF)** of the degradation (imaging) system and as usual * denotes convolution.
+where $h(x, y)$ is the **point spread function (PSF)** of the degradation (imaging) system and as usual \* denotes convolution.
 
 #### Point Spread Function (PSF)
 
@@ -231,7 +221,7 @@ The random variable in each pixel is governed by a probability distribution and 
 
 If we sample from the noise source, e.g., draw random samples from the field of random variables, we get a noise image $n(x, y)$ which is called a **realization of the noise source**.
 
-Note: it is possible to imagine noise sources that are position dependent (i.e., not i.i.d.) and spatially correlated. 
+Note: it is possible to imagine noise sources that are position dependent (i.e., not i.i.d.) and spatially correlated.
 
 <div style="font-family:'Noto Serif SC'">这在我们的日常生活中也有可能发生，但是这其实只会让我们的模型变得有一点点难而已。</div>
 
@@ -239,7 +229,7 @@ The degradation model is the underlying theory that we need in order to define a
 
 #### Examples of common noise distributions
 
-Let's just look at some concrete examples of noises, we've been using Gaussian Noise. But of course we can come up with other forms of noises here like  Rayleigh distribution, Gamma distribution, Exponential Distribution, Uniform Distribution and Impulse distribution.
+Let's just look at some concrete examples of noises, we've been using Gaussian Noise. But of course we can come up with other forms of noises here like Rayleigh distribution, Gamma distribution, Exponential Distribution, Uniform Distribution and Impulse distribution.
 
 <div align=center><img src="https://i.imgur.com/8z0LgiD.png" alt="image-20230307195831136" style="zoom: 40%;" /></div>
 
@@ -273,47 +263,43 @@ But the idea is sort of the same, we would like to have an algorithm that could 
 
 #### Direct Inverse Filtering
 
-So the image restoration process goes like this. 
+So the image restoration process goes like this.
 
 We have this underlying degradation model which involves some clean version of the image $f$ that has been convolved by the system PSF, and some noise has been added and then, we observe this $g$. This is what we get out of our imaging system.
 
-Our problem is to come up with some filter that takes $g$ as its input. 
+Our problem is to come up with some filter that takes $g$ as its input.
 
-It should take $g$, the degraded image. It should take some estimated least of the system $h$, and some statistics of the noise, maybe even the probability distribution of the noise. Put these things together, what we would like is to solve this inverse problem of finding $f$ or rather at least get an estimated or approximation of $f$. 
+It should take $g$, the degraded image. It should take some estimated least of the system $h$, and some statistics of the noise, maybe even the probability distribution of the noise. Put these things together, what we would like is to solve this inverse problem of finding $f$ or rather at least get an estimated or approximation of $f$.
 
 <div align=center><img src="https://i.imgur.com/vZqB9Ez.png" alt="image-20230308101528791" style="zoom:33%;" /></div>
 
 This is the type of algorithms that we're looking for some form of filter and is most likely a non-linear filter.
 
-***OK, let's start with the simplest thing we can do in order to restore an image here.***
+**_OK, let's start with the simplest thing we can do in order to restore an image here._**
 
-This process here will be called ***deconvolution*** because it is similar to sort of inverting the process of convolution, and it is also called ***direct inverse filtering***.
+This process here will be called **_deconvolution_** because it is similar to sort of inverting the process of convolution, and it is also called **_direct inverse filtering_**.
 
 The idea is that we start from the model, the LSI degradation model is
-
 
 $$
 g(x, y) = (h*f)(x, y) + n(x, y)
 $$
 
-
 Then we take the Fourier transform of the model, is (**multiplication**)
-
 
 $$
 G(u, v) = H(u, v)F(u, v) + N(u, v)
 $$
 
-
 So we have a convolution here in space, then, we know from the convolution theorem that the product in frequency domain. So it means that we need to take the Fourier transform of the $h$, and the Fourier transform of the clean image $f$. Similar to the noise, we just take the Fourier transofrm of an noise and add that => $N$.
 
 So this is the Fourier transform of the degraded image.
 
-***
+---
 
-***Note:*** *Just as what we have mentioned before, we could imagine a multiplicative noise model where instead of a plus but also a multiple application here. But that would make this Fourier Transform a little bit more involved because if you had a multipilication in space, that would translate into a convolution frequency which would mean that you would bascially have to take the term $H$ and convolve with the Fourier transform of the noise. => So becomes a little bit more involved.* We only consider the simple case here.
+**_Note:_** _Just as what we have mentioned before, we could imagine a multiplicative noise model where instead of a plus but also a multiple application here. But that would make this Fourier Transform a little bit more involved because if you had a multipilication in space, that would translate into a convolution frequency which would mean that you would bascially have to take the term $H$ and convolve with the Fourier transform of the noise. => So becomes a little bit more involved._ We only consider the simple case here.
 
-***
+---
 
 If we also make it even simple and assume there is no noise, so,
 
@@ -323,7 +309,7 @@ In the noise free case, $n(x, y) = 0$, deconvolution can be performed by the **d
 
 If these several assumptions hold, this is actually the exact solution.
 
-Let me just add a little bit of extra thing. 
+Let me just add a little bit of extra thing.
 
 Assumes we know the Fourier transform of the PSF $H(u, v)$, also known as the Optical Transfer Function (OTF).
 
@@ -331,13 +317,13 @@ Aso assumes that $H^{-1}(u, v)$ exists. In this case, the direct inverse filter 
 
 <div align=center><img src="https://i.imgur.com/gCQOSAM.png" alt="image-20230308105027817" style="zoom:33%;" /></div>
 
-Any OTF where for some frequencies $(u, v), H(u, v) = 0$, is non-invertible (Division cannot be $0$). This problem can in some instances be handled by adding a small constant to $H(u, v)$ at all frequencies. Now the solution is only an approximation to the original (un-degraded) signal. 
+Any OTF where for some frequencies $(u, v), H(u, v) = 0$, is non-invertible (Division cannot be $0$). This problem can in some instances be handled by adding a small constant to $H(u, v)$ at all frequencies. Now the solution is only an approximation to the original (un-degraded) signal.
 
 So once we know the $H$ function, this is how we get an estimate of the Fourier transform of the clean image. So you just need to do the inverse Fourier transform, you get the clean image back.
 
 Let's look at an example.
 
-Here we have a blurred image with Gaussian PSF $2^{nd}$. The corresponding OTF for $h$ is $3^{rd}$. 
+Here we have a blurred image with Gaussian PSF $2^{nd}$. The corresponding OTF for $h$ is $3^{rd}$.
 
 <div align=center><img src="https://i.imgur.com/1j3I1qq.png" alt="image-20230308110035329" style="zoom:33%;" /></div>
 
@@ -349,11 +335,9 @@ But, what happens if we introduce noise?
 
 What happens in the noisy situation, $n(x, y)\neq 0$?
 
-
 $$
 \hat {F} = F(u, v) + N(u, v)/ H(u, v)
 $$
-
 
 **The noise is boosted** by the direct inverse filter and will dominate the output solution.
 
@@ -375,13 +359,11 @@ How to fix the problem of the direct inverse filter had **in the presense of noi
 
 The idea is to find another filter $\hat H$ that can be used to deconvolve the degraded image as close to the original image as possible, or $\hat F(u, v) = G(u, v)/\hat H(u, v)$.
 
-Solution to the least squares minimization problem 
-
+Solution to the least squares minimization problem
 
 $$
 \min_{\hat f} E\{ (\hat f - f)^2 \}
 $$
-
 
 where E is the expected value and $\hat f$ is recovered image and $f$ is the unknown clean image.
 
@@ -389,35 +371,29 @@ The optimal LSI inverse filter in the least squares sense is called the **Wiener
 
 The solution has the inverse optical transfer function (OTF).
 
-
 $$
 \frac{1}{H'(u, v)} = \frac{1}{H(u, v)} \frac{|H(u, v)^2|}{|H(u, v)|^2 + S_n(u, v)/S_f(u, v)}
 $$
 
-
-Where 
-
+Where
 
 $$
 S_n(u, v) = |N(u, v)|^2, S_f(u, v) = |F(u, v)|^2
 $$
 
-
 are the power spectra of the noise and the original image.
 
-Remember that 
-
+Remember that
 
 $$
 |X(u, v)|^2 = X(u, v)\bar{X}(u, v)
 $$
 
-
 with $\bar{X}(u, v)$ denoting complex conjugation.
 
 #### Accounting for noise
 
-The ratio $S_n(u, v)/ S_f(u, v)$, averaged over all frequencies $(u, v)$, is the inverse of the Signal-to-noise-ration (SNR). 
+The ratio $S_n(u, v)/ S_f(u, v)$, averaged over all frequencies $(u, v)$, is the inverse of the Signal-to-noise-ration (SNR).
 
 <div style="font-family:'Noto Serif SC'">信噪比，how big is the noise relative to the actual signal.</div>
 
@@ -425,13 +401,11 @@ For white noise, the noise spectrum is a constant.
 
 The power spectrum of the un-degraded image is seldomly known, but we may approximate the ratio as a constant.
 
-The Wiener filter then reduces to 
-
+The Wiener filter then reduces to
 
 $$
 \frac{1}{H'(u, v)} = \frac{1}{H(u, v)}\frac{|H(u, v)|^2}{|H(u, v)|^2 + K}
 $$
-
 
 Where $K$ is a scalar parameter.
 
@@ -467,13 +441,11 @@ The Wiener filter is the solution to a regularized least squares problem.
 
 And the problem looks like this, so it's defined by a functional if you're into machine learning, you can also think of this as a lost function where we want to minimize for $f$ that is the clean or at least an approximation of the clean image.
 
-
 $$
 E[f] = ||f-g||^2 + \lambda||f||^2
 $$
 
-
-We have this expression of that involved both $f$ and degraded image $g$. 
+We have this expression of that involved both $f$ and degraded image $g$.
 
 So, $f$ is what we want, and we don't know it yet. But $g$ is given by observation.
 

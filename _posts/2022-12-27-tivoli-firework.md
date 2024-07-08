@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  Tivoli Firework
+title: Tivoli Firework
 date: 2022-12-27 16:00:56
 description: To accompany Jianxiang Yu, we went to the second oldest theme park worldwide, Tivoli in Denmark yesterday.
 tags: fun

@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  Swan Nearby
+title: Swan Nearby
 date: 2022-12-24 01:51:45
 description: A record to keep this swan in my memory.
 tags: fun
@@ -19,4 +19,3 @@ Several days ago, there was great heavy snow in Copenhagen leading to most of th
 </div>
 
 This photo was taken in the canal which is close to the KUA on my way to Rema 1000.
-

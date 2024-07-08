@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  Dictation > The Art of Balancing Stones
+title: Dictation > The Art of Balancing Stones
 date: 2023-06-27 11:00:00
 description: This is a daily dictation 2 for English improvement.
 tags: english dictation

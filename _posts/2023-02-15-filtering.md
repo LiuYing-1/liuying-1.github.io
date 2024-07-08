@@ -39,31 +39,31 @@ Filters on images are defined on **image neighborhoods**.
 
 There are different types of filtering, **linear filtering**, and **non-linear filtering**.
 
-The most common filters are **linear and shift invariant** (LSI) - i.e. the filter does not depend on position and the filter is a linear operator and is defined by  convolution integral and the $h$ (PSF) function.
+The most common filters are **linear and shift invariant** (LSI) - i.e. the filter does not depend on position and the filter is a linear operator and is defined by convolution integral and the $h$ (PSF) function.
 
 ### Applications of filtering
 
-+ **Noise reduction**
+- **Noise reduction**
 
   Noise often has high frequency, and it can be reduced by **a low-pass filter** effectively removing high frequencies.
 
-+ **Contrast enhancement**
+- **Contrast enhancement**
 
   To improve bright and dark areas in image make it more visible.
 
-+ **Sharpening / deblurring / deconvolution**
+- **Sharpening / deblurring / deconvolution**
 
   If you have a blurred image, you can perform sharpening / debarring / deconvolution. The end goal is to construct a more **sharp version** of the original image.
 
-+ **Detection of edges and other features**
+- **Detection of edges and other features**
 
   For analysis purposes, for instance, detect something called features which could be intensity **edges** and so on.
 
-+ **Recognition by templates**
+- **Recognition by templates**
 
   Recognize **certain shapes** of parts of an image and one way to do this is using **templates**.
 
-+ **Prediction / Recognition / Detection of materials / Objects in images**
+- **Prediction / Recognition / Detection of materials / Objects in images**
 
 ### Linear filtering
 
@@ -75,27 +75,32 @@ An operator $S$ is **linear**, if $S\{aX+bY\} = aS\{X\}+bS\{Y\}$.
 
 The linear operator $S$ is defined by the linear superposition integral.
 
-We say that the linear system and PSF is **shift-invariant** if 
+We say that the linear system and PSF is **shift-invariant** if
+
 $$
 h(x, y;x',y') = h(x-x', y-y')
 $$
+
 This leads to the **convolution integral**.
+
 $$
 g(x, y) = \int^{\infty}_{-\infty}\int^{\infty}_{-\infty}f(x', y')h(x-x', y-y')dx'dy'
 $$
 
 #### Linear continuous filter
 
-Consider an image defined by the function $f(x, y):\Omega \mapsto \R$ where $\Omega \subseteq \R^2$. For simplicity, we consider a 1 channel image, e.g., a real-valued grayscale image. 
+Consider an image defined by the function $f(x, y):\Omega \mapsto \R$ where $\Omega \subseteq \R^2$. For simplicity, we consider a 1 channel image, e.g., a real-valued grayscale image.
 
 <div style="font-family: 'Noto Serif SC'">两个坐标指向一个像素点的位置中包含的灰度值（简单起见）。</div>
 
 A linear filter is defined by an **impulse response** or **PSF** given by the function $h(x, y): {H}\mapsto \R$ where $H \subseteq \R^2$.
 
 Applying the linear filter to our image $f$ is done by **convolution**
+
 $$
 g(x, y) = \{f*h \}(x, y) = \int\int^{\infty}_{-\infty}f(x', y')h(x-x', y-y')dx'dy'
 $$
+
 The resulting function $g$ is the filter's response to the image $f$.
 
 The support of the image, $\Omega$, and the filter, $H$, does not have to be equal.
@@ -128,7 +133,7 @@ So we are creating a new image where in the new image, the pixel at that locatio
 
 It's natural to take stride of 1 pixel so that you move the window by shifting one pixel.
 
-But in principle, we could take larger strides. In this case, we'are ending up with the resulting image that comes out of the filter has a lower resolution than the input. 
+But in principle, we could take larger strides. In this case, we'are ending up with the resulting image that comes out of the filter has a lower resolution than the input.
 
 If the stride is 2, then, we are halving the width and the height of the image.
 
@@ -141,9 +146,11 @@ Consider a discrete image defined by the function $f(x, y):\Omega \mapsto \R$ wh
 A linear filter is defined by an **impulse response** given by the function $h(x, y): H\mapsto \R$ where $H \subseteq \Z^2$.
 
 If $h$ has finite support (finite impluse response (RIR)) with neighborhood window size $N\times M$, then applying the linear filter to our image $f$ is done by discrete convolution
+
 $$
 g(x, y) = \{ f*h\}(x, y) = \sum^{\lfloor N/2\rfloor}_{i=-\lfloor N/2\rfloor}\sum^{\lfloor M/2\rfloor}_{j=-\lfloor M/2\rfloor}f(x-i, y-i)h(i, j)
 $$
+
 Notice the convention of flipping $f$ instead of $h$. => It's equivalent to either do the shifting in each. They lead to the same result. So when programming, we need to consider whether it's easier to flip the image or the filter kernel.
 
 #### Discrete filtering for one pixel in output image
@@ -166,15 +173,17 @@ So as before what happens when you do convolution, you consider all the pixels i
 
 We have two things, a signal or an image $f$, and an impulse response function $h$ which is called the **box filter**.
 
-***How this box function could be defined?***
+**_How this box function could be defined?_**
 
 So, in 1D, the box function could be defined as,
+
 $$
 h_w(x) = \begin{cases}
 1, |x| \leq w/2 \\
 0, otherwise
 \end{cases}
 $$
+
 $|x|$ represents the absolute value of $x$. $w$ is the width of the box. Filter center at $x = 0$. And this says the center of this filter is given at $x$ equals $0$ which is in the middle of the box function.
 
 <div style="font-family: 'Noto Serif SC'">Box filter是一种用于图像处理和计算机视觉中的平滑滤波器。它是一种线性滤波器，使用具有相同权重的正方形内核来平滑图像中的像素。Box filter的内核通常是一个归一化的矩形或正方形，其中每个元素的权重相等，因此也被称为均值滤波器。Box filter通常用于降噪或模糊图像。在计算机视觉中，它也可以用于图像缩放、边缘检测和其他一些算法中。Box filter的缺点是它的平滑效果较弱，不够柔和，在对于较小的图像细节和纹理等细节的处理上表现不佳。在实际应用中，通常会结合其他滤波器来获得更好的平滑效果。</div>
@@ -227,7 +236,8 @@ The $2D$ box filter is separable and can be expressed by the convolution of two 
 
 <div align=center><img src="https://i.imgur.com/QXOvjxZ.png" alt="image-20230214215124119" style="zoom:67%;" /></div>
 
-***Proof***
+**_Proof_**
+
 $$
 (\delta_{(0, 0)}*h_N) * h_N^T = h_N * h_N^T = h_{N\times N}
 $$
@@ -240,14 +250,18 @@ The discrete Gaussian filter is a discretized finite support (FIR) version of th
 
 The standard deviation $\sigma$ is the scale/width of the filter. $\sigma$ increased, wider filter.
 
-The Gaussian filter is linear separable and we have 
+The Gaussian filter is linear separable and we have
+
 $$
 G_\sigma (x, y) = G_\sigma(x)* G_{\sigma}(y)
 $$
-Example: For $N = 3$ and $x = [-1, 0, 1]$ we have 
+
+Example: For $N = 3$ and $x = [-1, 0, 1]$ we have
+
 $$
 G_{\sigma}(x) = [0.27, 0.45, 0.27]
 $$
+
 Every time ($x = -1, 0, 1$), I get a new value that ends up being this vector or list of values that represents my finite filter.
 
 Usually $N$ is chosen as a function of $\sigma$, e.g., $N=k\sigma$, where $k = 1, 2, or \ 3$.
@@ -262,7 +276,7 @@ This filter is similar to the Mean Filter, the only difference is that we actual
 
 <div align=center><img src="https://i.imgur.com/m8HzuJw.png" alt="image-20230214221830753" style="zoom:50%;" /></div>
 
-Increasing $\sigma$ => wider the kernel 
+Increasing $\sigma$ => wider the kernel
 
 <div style="font-family: 'Noto Serif SC'">模糊粒度更细</div>
 
@@ -285,19 +299,25 @@ We started out with some noise versions of the original, we applied a filter and
 #### Correlation
 
 The convolution integral
+
 $$
 g(x, y) = \{f * h \}(x, y) = \int^{\infty}_{-\infty}\int^{\infty}_{-\infty} f(x', y')h(x-x', y-y')dx'dy'
 $$
+
 The correlation integral
+
 $$
 g(x, y) = \{f \circ h \}(x, y) = \int^{\infty}_{-\infty}\int^{\infty}_{-\infty}f(x', y')h(x+x', y+y')dx'dy'
 $$
+
 Difference is whether we flip $h$ or not as well as some theoretical consequences.
 
 Correlation is often used to implement discrete convolution, and instead flip filter kernel $h$ or image $f$ before correlation.
+
 $$
 g(x, y) = \sum^{\lfloor N/2 \rfloor}_{i=-{\lfloor N/2 \rfloor}} \sum^{\lfloor M/2 \rfloor}_{j=-{\lfloor M/2 \rfloor}}f(x+i, y+j)h(i,j)
 $$
+
 <font face="Noto Serif SC">我的理解是，卷积是翻卷再 correlation。</font>
 
 If you have a fast implementation of correlation, you can always implement a discrete convolution simply by using correlation. The only thing you have to do is you have to take your filter kernel and **flip it before you do correlation**. The alternative way is that you can flip th eimage left right and up and down before you do correlation.
@@ -314,7 +334,7 @@ Cross-correlation between an image and a prototype and the image patches centere
 
 I apply cross-correlation, and I take out a piece of image and normalise it in an appropriate way. In this way, I can use the this to perform template matching.
 
-Let's assume that we cut out a face from this image. And that face forms my filter kernel. I do a little bit of normalization of the intensities to do cross-correlation in a proper way. I take this filter and then I do discrete correlation. 
+Let's assume that we cut out a face from this image. And that face forms my filter kernel. I do a little bit of normalization of the intensities to do cross-correlation in a proper way. I take this filter and then I do discrete correlation.
 
 I would expect that as we move this filter across the image, then, at each location where the pixels in the filter and in the image are similar you get a high value out of this correlation. We get the left image and you can see that there's some extra bright spots and if we take these local maxims, these local bright spots and make a cut out of the same size as the filter. Let's say we have a bright spot and I think that is one guy's face and we then cut out the filter and then plot that as pieces of images that we stick together.
 
@@ -354,7 +374,7 @@ The discrete median filter / rank filtering
 
 <div align=center><img src="https://i.imgur.com/bP455gE.png" alt="image-20230214235420981" style="zoom:67%;" /></div>
 
-**Median Filter** 
+**Median Filter**
 
 (a) => It looks a little bit like the **mean filter** but it's not computing the mean. There is some smearing of the details, but it doesn't look much different from the mean result.
 
@@ -364,7 +384,7 @@ The discrete median filter / rank filtering
 
 **Rank Filter**
 
-(a) => It prefer bright values. The coin seems to be a little bit more shiny. 
+(a) => It prefer bright values. The coin seems to be a little bit more shiny.
 
 (b) => It has the adverse effect of boosting the noise. It seems to select a bright value. => This filter here is not really doing anything proper.
 
@@ -394,7 +414,7 @@ We had this two views of an image either as an array of pixel values, or we coul
 
 <div align=center><img src="https://i.imgur.com/jirdwlq.png" alt="image-20230215010124607" style="zoom:67%;" /></div>
 
-We get this weird landscape. What we realized that an image is just a function or by its discrete representation function. 
+We get this weird landscape. What we realized that an image is just a function or by its discrete representation function.
 
 #### Approximating image derivatives
 
@@ -424,7 +444,7 @@ We move a row down in the image. We need to look one pixel ahead of the target p
 
 Skip
 
-***We can construct linear filter kernels from these approximations (forward differencing).***
+**_We can construct linear filter kernels from these approximations (forward differencing)._**
 
 We just need to subtract neighbor pixels from each other.
 
@@ -432,10 +452,12 @@ Since correlation does not require us to flip the filter, let's start in the cas
 
 Let's go with the derivatives with $x$ firstly. It involves a target pixel value $f(x, y)$, and the one that just to the right of that pixel. The operation actually does here is picking out the value $f(x+1, y)$ and picking out the value $f(x, y)$ and changing the sign to $-$. So the filter kernel could look like $[-1, 1]$. We are computing the derivative at $(x, y)$ and we're going to assume that in this filter mask, the $-1$ is the center of the filter. This pixel should be a line with the target pixel $(x, y)$.
 
-Whatever we have at $(x, y)$, we multiply that by $-1$ and then, we take one step to the right. And we take out the value we have at $(x+1, y)$ and just multiply that by 1. At the end, correlation is a sum, so now you have 
+Whatever we have at $(x, y)$, we multiply that by $-1$ and then, we take one step to the right. And we take out the value we have at $(x+1, y)$ and just multiply that by 1. At the end, correlation is a sum, so now you have
+
 $$
 f(x+1, y) - f(x, y)
 $$
+
 So, this implements derivative using the $[-1 \ 1]$ impulse response, and doing correlation. The difference between correlation and convolution is that flipping the filter.
 
 <div align=center><img src="https://i.imgur.com/WwqPPrL.png" alt="image-20230215015059514" style="zoom:67%;" /></div>
@@ -470,13 +492,13 @@ $derivatives$ are reached by applying the Sobel filter.
 
 If we consider this particular change or edge in the intensities (scarf), we have dark pixels that the values are close to 0 and then the brighter pixel values here.
 
-We are moving from dark to white, from small intensity value to larger intensity value. When we compute the sobel filter, it involves looking 1 pixel ahead (larger) and one behind (small). **That means the filter response becomse positive.** 
+We are moving from dark to white, from small intensity value to larger intensity value. When we compute the sobel filter, it involves looking 1 pixel ahead (larger) and one behind (small). **That means the filter response becomse positive.**
 
 Once we start to subtract pixels from each other, we can get a negative filter response. So the resulting image could have negative values.
 
 Dark edge is because we are moving from large value to small value. - Dark after rescaling.
 
-***So the derivatives says about changes in the intensity levels, the contrast changes of the image.***
+**_So the derivatives says about changes in the intensity levels, the contrast changes of the image._**
 
 Computing derivatives is sensitive to noise - we are adding up noise from multiple pixels. => Even though sobel might have sloved it inside, but it still need to use some form of blurring first (Gaussian filter with small $\sigma$). => Then, you can get more robust derivatives that are robust to noise.
 
@@ -492,7 +514,7 @@ The problem is that for the first derivative, we need to consider two pixel valu
 
 The way to limit the effect and still get reasonable results is by applying some smoothing filter first such as the Gaussian filter.
 
-####  A snippet of differential geometry
+#### A snippet of differential geometry
 
 Differential geometry is a handy mathematical formulation for building image analysis algorihms.
 
@@ -502,7 +524,7 @@ Differential geometry is a handy mathematical formulation for building image ana
 
 An image intensity edge are given by locations in the image of abrupt changes in intensities (high contrast).
 
-Usually detected by 
+Usually detected by
 
 - Extrema of first order derivatives, e.g., maxima of gradient magnitude
 - Zero crossings of second order derivatives, e.g., of the Laplacian

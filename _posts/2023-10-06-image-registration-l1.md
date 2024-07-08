@@ -1,18 +1,18 @@
 ---
 layout: post
-title:  Image Registration Basics
+title: Image Registration Basics
 date: 2023-10-06 08:00:00
 description: Learning note for medical image registration.
 tags: mia
 categories: study ucph
 related_posts: true
-toc: 
+toc:
   sidebar: left
 giscus_comments: true
 thumbnail: assets/img/image-registration.png
 ---
 
-***Disclaimer: All notes below are refered to the course "Medical Image Analysis" delivered by UCPH.***
+**_Disclaimer: All notes below are refered to the course "Medical Image Analysis" delivered by UCPH._**
 
 So today's lecture will be on **<u>Image Registration</u>**.
 
@@ -24,7 +24,7 @@ We have already talked about the topic of registration in our previous lecture. 
 - Name and explain at least two similarity measures
 - Describe the difference between rigid, affine and non-rigid registration
 
-####  What is Registration?
+#### What is Registration?
 
 <div class="row mt-3">
     <div class="col-sm mt-3 mt-md-0">
@@ -34,7 +34,6 @@ We have already talked about the topic of registration in our previous lecture. 
 <div class="caption">
   Figure 1. Example of registration
 </div>
-
 
 - <u>Image processing method</u> for <u>aligning two or more images with each other spatially</u> (geometrically)
 - You can <u>make images from different imaging modalities, times, sections, angles</u>, etc, <u>comparable</u>.
@@ -50,7 +49,7 @@ We have already talked about the topic of registration in our previous lecture. 
   Figure 2. Why we need registration
 </div>
 
-***Registration geometrically transforms one image into another.***
+**_Registration geometrically transforms one image into another._**
 
 So what we have is we have an image which is in the most top left. And we have a target which is in the most right bottom.
 
@@ -83,7 +82,7 @@ So basically we get some map which says which pixels went where during the regis
 
 我的理解是我们原本有一系列标准的人工分割好的图片，将每一张图片都以我们的新图像作为 Target 进行配准，在配准过程中，我们获得了变换矩阵，而这些矩阵可以应用到分割上从而获得新图像的 segmentation。
 
-We deform this image towards our target and then, we use the transformation to deform the segmentation towards our target, so that our segmentation kind of stretches and changes that tries to capture our new image. 
+We deform this image towards our target and then, we use the transformation to deform the segmentation towards our target, so that our segmentation kind of stretches and changes that tries to capture our new image.
 
 We can do it for all images in our atlas and then we get many versions of segmentations. And then we average them somehow (label fusion), and we just take this average result as a registered segmentation result.
 
@@ -155,7 +154,7 @@ There are many different reasons for wanting to register images:
 
 #### Ingredients of image registration
 
-The registration algorithms have different aspects which they work with. 
+The registration algorithms have different aspects which they work with.
 
 One aspect is information type. What information they use are **intrinsic** or **extrinsic** information. Another one thing which actually depends on information type is the **similarity measure**. How to understand that images become more similar or less similar during the registration. And another thing is **transformation**. So for some applications that have **rigid** transformations, only translation, rotation for example. Or for some application and most often we need **non-rigid**. So we need to somehow change the relative position of pixels, how expansive areas fix some other areas to get the new object.
 
@@ -190,7 +189,7 @@ The intrinsic information is used when these images are visually similar to each
   Figure 5. Illustration of Histogram
 </div>
 
-The histogram pixel reflects how much these two pixels are similar to each other. And the higher color is the more similar. So if you take the next pixel, how similar is the first pixel to second pixel and so on. And when we go through all pixels of first row, we compare the first pixel the first image to all pixels in the second image. And we just measure how similar they are. 
+The histogram pixel reflects how much these two pixels are similar to each other. And the higher color is the more similar. So if you take the next pixel, how similar is the first pixel to second pixel and so on. And when we go through all pixels of first row, we compare the first pixel the first image to all pixels in the second image. And we just measure how similar they are.
 
 So if these images are very similar to each other, what we would expect is to see somehow the high values on the diagonal when we compare the corresponding pixels, and to see a low values outside the diagnoal, and we don't compare the corresponding pixels.
 
@@ -212,7 +211,7 @@ So this is the idea of the histogram.
 - The images are too different from each other visually
 - We need to **help registration by providing** **correspondences**
 
-The extinsic information, we usually work with images which are not similar to each other. So you can see these two images, one of them is CT and one of them is PET. And the intensities here are completely different. 
+The extinsic information, we usually work with images which are not similar to each other. So you can see these two images, one of them is CT and one of them is PET. And the intensities here are completely different.
 
 For example, we can see that the mandible is more or less visible, but in PET, the mandiable is not visible at all and the bone is invisible. But tumor is very much visible at PET, very poor visible in CT.
 
@@ -238,7 +237,6 @@ See details in my previous blog post from [Signal and Image Processing - Transfo
   </div>
 </div>
 
-
 ##### Non-rigid transformations
 
 <div align=center><div class="row mt-3">
@@ -247,7 +245,6 @@ See details in my previous blog post from [Signal and Image Processing - Transfo
     </div>
   </div>
 </div>
-
 
 Now let's define this **mathematically**.
 
@@ -263,7 +260,6 @@ Can we extend this to 3D?
     </div>
   </div>
 </div>
-
 
 <u>In what kind of applications to we want to use rigid registrations?</u>
 
@@ -289,7 +285,6 @@ Applications of **intra-subject rigid body registration** can be found in variou
   </div>
 </div>
 
-
 In summary, **intra-subject rigid body registration** involves **aligning and comparing images of the same individual taken at different times** or **under different conditions**. It's a fundamental technique in medical image analysis used for **monitoring, diagnosis, and treatment planning**, where precise **spatial alignment of anatomical structures** is essential.
 
 ##### Affine registration - mathematcically
@@ -302,7 +297,6 @@ However, basically, the scaling is considered as affine transformation.
     </div>
   </div>
 </div>
-
 
 In what kind of applications to we want to use affine registrations?
 
@@ -333,7 +327,6 @@ Applications of **inter-subject affine transformation** can be found in various 
   </div>
 </div>
 
-
 In summary, inter-subject affine transformation involves **aligning and registering images from different individuals or patients**, allowing for **meaningful comparisons and analyses across a population**. This technique plays a crucial role in various medical image analysis applications, particularly in group studies and population-based research.
 
 ##### Example of affine registration across several subjects
@@ -345,7 +338,6 @@ In summary, inter-subject affine transformation involves **aligning and register
   </div>
 </div>
 
-
 ##### Non-rigid registration - mathematically
 
 <div align=center><div class="row mt-3">
@@ -354,7 +346,6 @@ In summary, inter-subject affine transformation involves **aligning and register
     </div>
   </div>
 </div>
-
 
 In what kind of applications to we want to use non-rigid registrations?
 
@@ -382,7 +373,6 @@ A 3x3 matrix that represents **a non-rigid transformation**. **Each element in t
   </div>
 </div>
 
-
 In both **intra-subject** and **inter-subject** scenarios, **non-rigid registration allows you to account for the complex and local variations in anatomy**, enabling **accurate comparisons, analysis, and medical interventions**. It's particularly important when dealing with deformable structures and when rigid or affine transformations are insufficient to capture the necessary deformations. Applications range from disease monitoring to surgical planning and population studies.
 
 **1. 为什么要使用非刚性变换？**
@@ -404,7 +394,6 @@ In both **intra-subject** and **inter-subject** scenarios, **non-rigid registrat
     </div>
   </div>
 </div>
-
 
 #### Similarity measures
 
@@ -455,14 +444,9 @@ One of the good idea which is used almost always when the pixel-wise comparison 
 
 What we do is we take our intensities in our image, we compute the mean intensity, we compute the standard deviation. We can test this and we normalise them. From the original images subtract the mean that the new mean will become $0$. And we divide it by the standard deviation.
 
-
 $$
 I^* = \frac{I-\overline{I}}{\sigma(I)}
 $$
-
-
-
-
 
 <div align=center><div class="row mt-3">
     <div class="col-sm mt-3 mt-md-0">
@@ -481,12 +465,9 @@ So **normalization** is one of the things which is very commonly used and this i
 
 Another idea which we can go further in this area, what we can do is we can do the **cross-correlation**.
 
-
 $$
 NCC = \frac{\sum_{x, y}\left(\left(I(x, y) - \overline{I}) \cdot(J(x, y)-\overline{J}\right)\right)}{\sqrt{\sum_{x, y}(I(x, y) - \overline{I})^2\sum_{x, y}(J(x, y)-\overline{J})^2}}
 $$
-
-
 
 So what we do is to **find the normalized pixel values** and then **multiply each other**, and **find the sum of them**. And then we divide it by the squared root of multiplication of squared difference. So to see how these things behaves, let's go to the mirror board to see some examples.
 
@@ -501,21 +482,17 @@ So what we do is to **find the normalized pixel values** and then **multiply eac
 
 So, what we would like to do is would like this expression to get good values when we compare the upper two patches, and to have bad values when compared to the other two. We are going to quickly compute them to see what happens.
 
-
 $$
 NCC_{good} = \frac{3\cdot3 + 3\cdot(-1)\cdot(-1)}{\sqrt{\left(9+1+1+1\right)^2}} = \frac{12}{12}=1
 $$
 
-
 What about the bad patches?
-
 
 $$
 NCC_{bad} = \frac{-3+1+1-3}{\sqrt{\left(9+1+1+1\right)^2}} = \frac{-4}{12}=-\frac{1}{3}
 $$
 
-
-What we would like the normal cross correlation to be as high as possible because we saw that for the **same patch**, we get $1$. And for two different patches, we get $-\frac{1}{3}$. And we actually see one of the good property of the normal cross-correlation. It seems to be that its values are actually restricted into the $-1$ and $+1$ range. So when we get to same patches, basically the best possible scenario. We get the result with $1$. So probably if we get the opposite patch, we will probably get $-1$. 
+What we would like the normal cross correlation to be as high as possible because we saw that for the **same patch**, we get $1$. And for two different patches, we get $-\frac{1}{3}$. And we actually see one of the good property of the normal cross-correlation. It seems to be that its values are actually restricted into the $-1$ and $+1$ range. So when we get to same patches, basically the best possible scenario. We get the result with $1$. So probably if we get the opposite patch, we will probably get $-1$.
 
 The good thing about is normalise as cross correlation is, that's why the name comes that our values. They **get normalized** into the $-1$ to $+1$ range. This is very **useful** when we compare two patches.
 
@@ -528,7 +505,7 @@ The good thing about is normalise as cross correlation is, that's why the name c
   Figure 11. Maximization
   </div></div>
 
-***Will MSE and NCC work for CT-MR image registration?***
+**_Will MSE and NCC work for CT-MR image registration?_**
 
 <div align=center><div class="row mt-3">
     <div class="col-sm mt-3 mt-md-0">
@@ -539,24 +516,23 @@ The good thing about is normalise as cross correlation is, that's why the name c
   Figure 12. CT-MR
   </div></div>
 
-We want to perform **registration** on **CT-MR** image on two images, which are **very different intenstity patterns**. The edges in these images are kind of **similar**. 
+We want to perform **registration** on **CT-MR** image on two images, which are **very different intenstity patterns**. The edges in these images are kind of **similar**.
 
-You can see that there is a **mandible** on the right chart, which is **black** but on the left side, it is **white**. You can see the edges over human skin. They are also kind of more or less visible. But what is important is that the intensities now is completely different. So the intensitity plan is completely different. 
+You can see that there is a **mandible** on the right chart, which is **black** but on the left side, it is **white**. You can see the edges over human skin. They are also kind of more or less visible. But what is important is that the intensities now is completely different. So the intensitity plan is completely different.
 
-***Now the question is if you can use MSE or NCC or something like this for this registration.***
+**_Now the question is if you can use MSE or NCC or something like this for this registration._**
 
 Actually turns out we **<u>cannot</u>** use them because what MSE and what all of these metrics for what they tried to do is try to **<u>match high intensity with high intensity, and low intensity with low intensity</u>**.
 
-But in our particular case, what we would like to do is we want to **match somehow the patterns the edges within the pixels**. For example, we want to match a bone, where a black and white intensities in different patches. **It's very difficult to just in advance define this, so we can know what exactly we want to match**.  => *But we want to match patterns not individual intensities.*
+But in our particular case, what we would like to do is we want to **match somehow the patterns the edges within the pixels**. For example, we want to match a bone, where a black and white intensities in different patches. **It's very difficult to just in advance define this, so we can know what exactly we want to match**. => _But we want to match patterns not individual intensities._
 
 ##### Mutual image information
 
 For this reason, there is another metric which is called **mutual image information**.
 
-  The metric is most commonly used in **image registration**. It requires a lot of computation resources, but at the same time, it is a very **versatile** can be applied for many different images. I do not need to know many things about images in advance. We can just apply it and it will most likely work.
+The metric is most commonly used in **image registration**. It requires a lot of computation resources, but at the same time, it is a very **versatile** can be applied for many different images. I do not need to know many things about images in advance. We can just apply it and it will most likely work.
 
 Here is an equation how mutual information works.
-
 
 $$
 MI = E(I, J)
@@ -575,9 +551,9 @@ So we need to compute the entropy issues and we will compute in histogram manner
 
 Below is the illustration.
 
-Let's say we have different images which we want to match each other. Let's assume these are the images of some object. 
+Let's say we have different images which we want to match each other. Let's assume these are the images of some object.
 
-What we do is we create a 2D plot where at a lower dimension.  
+What we do is we create a 2D plot where at a lower dimension.
 
 <div align=center><div class="row mt-3">
     <div class="col-sm mt-3 mt-md-0">
@@ -664,9 +640,9 @@ Different interpolation techniques work on diff. images, the choice of interpola
 
 不同插值技术中提到的 RMSE（均方根误差）值可以作为一种量化指标，用于评估每种插值方法应用于特定图像时的质量或准确性。RMSE 是一种常用指标，用于量化原始图像与插值（转换）图像之间的差异。
 
-The **interpolation** in image registration plays two roles. 
+The **interpolation** in image registration plays two roles.
 
-One of them is for **computing the values of pixels**. Let's say if the pixels has a coordinate which do not match original coordinates. For example, one pixel has a coordinate $(0, 0)$. But if we would like to move it a little bit, $(-0.1, 0.3)$. **What kind of value of this pixel have?** Should we just around these numbers to get $(0, 0)$ or should we do something more intellectual. 
+One of them is for **computing the values of pixels**. Let's say if the pixels has a coordinate which do not match original coordinates. For example, one pixel has a coordinate $(0, 0)$. But if we would like to move it a little bit, $(-0.1, 0.3)$. **What kind of value of this pixel have?** Should we just around these numbers to get $(0, 0)$ or should we do something more intellectual.
 
 所以就是当我们做配准时，我们移动了一点点图像，那么原先点上的像素应该是变成多少呢？使用插值法来计算。
 
@@ -684,19 +660,21 @@ Actually we take account the neighboring pixels if they can play some role in th
 We have four points $(0,0), (1,0), (0,1)$ and $(1,1)$. Let's say there are pixels $1$, $2$, $3$ and $4$. And would like to find the value of a pixel which will be located here. And then the question is **what will be the value of the pixel**? We know the intensities of these four pixels, and also the corresponding $(x, y)$ of the target pixel.
 
 So the way to do it is to **calculate the contribution**. The contribution of this pixel to our new pixel. Let's just imagine that this $x, y$ will be very close to $1$.
+
 $$
 x, y\approx 0.999
 $$
+
 So how similar should be the contribution of the pixel? Each of these four pixels or contribute something to the intensity.
 
 The contribution of $I(0, 0)$:
 
 - Proportional to the opposite "rectangle".
 
-
 $$
 (1-x)\cdot(1-y)\cdot I(0, 0)
 $$
+
 The same logical goal for other four pixels. So for pixel $(1,1)$, it's contribution to the intensity of our new pixel through the proportional to this.
 
 <div align=center><div class="row mt-3">
@@ -708,7 +686,6 @@ The same logical goal for other four pixels. So for pixel $(1,1)$, it's contribu
   Figure 21. Contribution illustration
   </div></div>
 
-
 $$
 \begin{align}
 I(\cdot) &= (1-x)\cdot(1-y)\cdot I(0. 0) \\
@@ -717,6 +694,7 @@ I(\cdot) &= (1-x)\cdot(1-y)\cdot I(0. 0) \\
 & + x \cdot y \cdot I(1, 1)
 \end{align}
 $$
+
 So the rule is that we compute the **size of these boxes** and then **multiplying them** by the opposite pixel. Then, sum them up and get the final new value of the pixel.
 
 #### Image registration is optimization
@@ -731,7 +709,6 @@ So we know all this and we can try to formulate the registration, how the regist
 
 So what we need to do is we need to **minimize** depending on what kind of similarity measure we use. We want to minimize a distance metric.
 
-
 $$
 \min\sum_{i, j}d\left(I(i, j) - J\left(x(i, j, \theta), y(i, j, \theta\right)\right)
 $$
@@ -745,27 +722,24 @@ $$
   Figure 22. Similarity measure
   </div></div>
 
-So here is our formulation of for registration optimization. What we need to find is to find $\theta$. ***The question is how to do it.***
+So here is our formulation of for registration optimization. What we need to find is to find $\theta$. **_The question is how to do it._**
 
 The common way to solve it is using an alogrithm called **<u>gradient descent algorithm</u>**. So let's just choose the most simple similarity measures we have. So, for $d$, let's choose the squared intensity difference. So basically, we just take a pixel and find the difference between each pixel individually, and that's it. No mutual information or anything complex like that.
-
 
 $$
 d(I(i, j), J(x, y)) = (I(i, j)-J(x, y))^2
 $$
-And $\theta$ will only use one transformation - translation. So basically $F$ from $I$ to $J$ is basically a translation we would translate and the $I$ to some value that the $x$ and $J$ to some value.
 
+And $\theta$ will only use one transformation - translation. So basically $F$ from $I$ to $J$ is basically a translation we would translate and the $I$ to some value that the $x$ and $J$ to some value.
 
 $$
 f(I, J, \theta) - \text{translation using }\theta \\
 f(i, j, \theta) = [i+\theta_x, j+\theta_y]
 $$
 
-
 And this is one of the most simple configuration we can have, and now the question is **how we get optimized solution**? How we can find the optimal $\theta$? And the way to do it is to use the **gradient descent algorithm**.
 
 Then, the formulation of the problem is, **<u>we want to optimize</u>**:
-
 
 $$
 E(\theta) = \sum_{i, j}(I(i, j) - J(x(i, j, \theta), y(i, j, \theta))^2
@@ -775,34 +749,34 @@ $$
 
 By using **gradient decent algorithm**:
 
-
 $$
 \nabla E(\theta) = \frac{\partial E(\theta)}{\partial \theta}
 $$
-And move our solution  move like take some $\theta$, change our $\theta$ according to the value of the gradient.
 
+And move our solution move like take some $\theta$, change our $\theta$ according to the value of the gradient.
 
 $$
 \theta_{t+1} = \theta_{t} + \eta\nabla E(\theta)
 $$
+
 Usually weighting factor is something very small, like $0.01$. In deep learning, it is called, learning rate. So the question is how to find the gradient of the expression?
 
-In our case, 
-
+In our case,
 
 $$
 \nabla E(\theta) = \nabla \sum_{i, j}(I(i, j) - J(x(i, j, \theta), y(i, j, \theta)))^2 = \\
 -\sum_{i, j} 2(I(i, j) - J(x(i, j, \theta), y(i, j, \theta)))\cdot\frac{\partial J}{\partial \theta}
 $$
-Now, the question is how to differentiate the $J$ against $\theta$. 
 
+Now, the question is how to differentiate the $J$ against $\theta$.
 
 $$
 \frac{\partial J}{\partial \theta} = \frac{\partial J}{\partial X} \cdot \frac{\partial X}{\partial \theta}
 $$
-And this is again a complex function, we need to first differentiate it against its coordinates (transformed coordinates), basically aginst $x$ and $y$. 
 
-So if you want to differeniate an image against its coordinates, what it means is actually very simple thing. 
+And this is again a complex function, we need to first differentiate it against its coordinates (transformed coordinates), basically aginst $x$ and $y$.
+
+So if you want to differeniate an image against its coordinates, what it means is actually very simple thing.
 
 <div align=center><div class="row mt-3">
     <div class="col-sm mt-3 mt-md-0">
@@ -811,18 +785,16 @@ So if you want to differeniate an image against its coordinates, what it means i
   </div>
 </div>
 
-
 $$
 \frac{\partial J}{\partial x} = \frac{1}{2}(I(x+1, y) - I(x-1, y))
 $$
 
-
 Find two neighboring values for every pixel, subtract them from each other, and then multiply by 0.5. And then we do the same thing for the vertical direction.
-
 
 $$
 \frac{\partial J}{\partial y} = \frac{1}{2}(I(x, y+1) - I(x, y-1))
 $$
+
 Below is the illustration.
 
 <div align=center><div class="row mt-3">
@@ -836,17 +808,17 @@ Below is the illustration.
 
 This part is easy, but the question is how to find the last part on the abovementioned differentiation, the gradient of our coordinates against our transformation.
 
-
 $$
 T(x, y) = \begin{bmatrix}1 \quad 0 \quad \theta_x\\0 \quad 1 \quad \theta_y\\ 0 \quad 0\quad 1\end{bmatrix}\begin{bmatrix}x\\y\\1\end{bmatrix} = [x+\theta_x, y+\theta_y]\\
 \frac{\partial X}{\partial \theta} = \begin{bmatrix} \frac{\partial X}{\partial \theta_x}; \frac{\partial X}{\partial \theta_y}\end{bmatrix} = [1, 1]
 $$
- Now, we have everything.
 
+Now, we have everything.
 
 $$
 \frac{\partial J}{\partial \theta} = [\frac{1}{2}\left(I(x+1, y\right) - I(x-1, y), \frac{1}{2}(I(x, y+1) - I(x, y-1))]
 $$
+
 This is just differentiaion of the image because our transformation is just translation. Then, we can compute the whole graient of our system.
 
 <div align=center><div class="row mt-3">
@@ -868,7 +840,6 @@ Another issue is that $\theta$ can contain many variables. In reality, $\theta$ 
 
 - 9 for similarity transformations
 
-  
   $$
   \begin{bmatrix}
   \theta_1 \quad \theta _2 \quad \theta_3\\
@@ -943,4 +914,3 @@ In the pyramid approach, people don't do it for every pixel, people do it for a 
   </div></div>
 
 - Do not perform registration per pixel but use a sparse grid
-
