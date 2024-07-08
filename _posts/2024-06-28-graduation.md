@@ -21,7 +21,6 @@ I am thrilled to announce that I have successfully defended my master thesis and
   </div>
 </div>
 
-
 The title of my thesis is "Exploration of Self-Supervised Learning Methods for Longitudinal Image Analysis", specifically focusing on the application of self-supervised learning methods, which are BYOL and SimSIAM, in medical image analysis for longitudinal studies (i.e., tumor progression) on lung cancer. The 3D ResNet model is first pre-trained on the LIDC-IDRI dataset, and then the model is tasked with predicting the tumor volume at the future timepoint of the same subject, on the Longitudinal 4D Lung dataset. The results show that the self-supervised learning methods cannot be used to train 3D ResNet to learn meaningful representations for longitudinal image analysis, and the learned representations are not significantly correlated with the actual tumor volume, verified by the linear probing task. This failure is attributed to the following reasons: 1. the volume featured by the LIDC-IDRI dataset (nodules) is with substatial differences from the Longitudinal 4D Lung dataset (tumors), 2. the current pre-processing pipeline does not isolate the lung region perfectly, 3. the model is not fine-tuned on the longitudinal downstream task, and 4. the invovled augmentations impair the model's ability to learn precise tumor volume representations.
 
 <div class="row mt-3 mb-3">

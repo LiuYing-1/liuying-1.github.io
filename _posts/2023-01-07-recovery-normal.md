@@ -49,7 +49,7 @@ authors:
 
 ## Recovery: Basic Concepts
 
-For this part, please review [Experi | Recovery](https://liuying-1.github.io/advanced-computer-system/experi-recover/).
+For this part, please review [Experi | Recovery](https://liuying-1.github.io/blog/2023/recover/).
 
 ## Recovery: ARIES, normal operation
 
