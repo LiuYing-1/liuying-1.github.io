@@ -21,7 +21,7 @@ authors:
 <div align=center>
   <div class="row mt-3 mb-3">
     <div class="col-sm mt-3 mt-md-0">
-		  {% include figure.html path="assets/img/abstractions.jpg" class="img-fluid rounded z-depth-1" zoomable=true %}
+		  {% include figure.liquid path="assets/img/abstractions.jpg" class="img-fluid rounded z-depth-1" zoomable=true %}
     </div>
   </div>
 </div>
