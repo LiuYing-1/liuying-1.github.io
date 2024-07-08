@@ -14,7 +14,7 @@ toc:
 
 authors:
   - name: Ying Liu
-    url: url: "https://di.ku.dk/Ansatte/forskere/?pure=da/persons/762476"
+    url: "https://di.ku.dk/Ansatte/forskere/?pure=da/persons/762476"
     affiliations:
       name: DIKU, UCPH
 ---
