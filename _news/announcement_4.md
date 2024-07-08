@@ -5,4 +5,4 @@ inline: true
 related_posts: false
 ---
 
-🍻 I am happy to share I got **12 out of 12** in the courses of **Advanced Algorithms and Data Structures**, **Signal and Image Processing**, and **Advanced Deep Learning**. 
+🍻 I am happy to share I got **12 out of 12** in the courses of **Advanced Algorithms and Data Structures**, **Signal and Image Processing**, and **Advanced Deep Learning**.

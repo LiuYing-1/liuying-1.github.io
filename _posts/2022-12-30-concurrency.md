@@ -26,7 +26,7 @@ authors:
 
 <div align=right><I>Reference: This note is based on the Course Advanced Computer Systems from UCPH</I></div>
 
-### Do-it-yourself Recap
+## Do-it-yourself Recap
 
 **Techniques for Performance**
 
@@ -38,7 +38,7 @@ Separate the processing of signal requests, and put a process into different req
 
 We reduce the number of things that need to be executed sequentially. We may not reduce the latency of a single request, but on average, it improves the latency.
 
-### Objectives Today
+## Objectives Today
 
 1. Identify the multiple interpretations of the property of atomicity. => Talk about atomicity as a _desirable_ property of a system that uses concurrency to optimize for performance.
 2. Implement methods to _ensure before-or-after atomicity_, and argue for their correctness. => When talking before or after atomicity, 2 basic strategies for achieving it are considered, _lock_ and _lockless_.
@@ -46,7 +46,7 @@ We reduce the number of things that need to be executed sequentially. We may not
 4. Explain situations where predicate locking is required.
 5. Discuss the definition of serializability and the notion of anomalies (that do not happen for serializable executions).
 
-### Read-Write Systems
+## Read-Write Systems
 
 In general, we will look at Read-Write Systems when we could say we are **_operating against the memory abstraction or we are trying to speed up the memory abstraction by concurrency_** and we want to still **_have some guarantees about the computations_**. We do not want to leave the actions of the concurrent to execute arbitrarily but we want to put some restrictions on those. And the core idea is to **_group the individual actions_** that we want to interleave or not interleave in the transactions. So that is **_On-Line Transaction Processing_** (OLTP). We have processing not only read and write actions but groups of those and grouped into transactions. Such systems do these operations and group them into transactions that arise all over the place.
 
@@ -62,7 +62,7 @@ High-performance trading
 
 Updates on social networks, e.g., Facebook
 
-### Transaction
+## Transaction
 
 <b>In this course, we would like to focus more on the relationship between Abstractions and Performance, and to improve Performance, we can use concurrency which has ensured the property of Atomicity.</b>
 
@@ -77,15 +77,15 @@ In this course, we consider memory abstraction with a database, as it is the ori
 - **Isolation**: transaction executes as if it were the only one in the system (aka before-or-after atomicity)
 - **Durability**: once the transaction is done ("committed"), results are persistent in the database
 
-### Examples of Transactions in SQL (Bank Transfers)
+## Examples of Transactions in SQL (Bank Transfers)
 
 Under the hood, we know it all translates to calls to `READ` and `WRITE`.
 
-### Conceptual Model - Version Histories
+## Conceptual Model - Version Histories
 
 Conceptually, we think of a system that executes transactions as having certain versions. For example, if we do a transaction of transfer, then, we might have one version of the database.
 
-### The many faces of atomicity
+## The many faces of atomicity
 
 The definition of **_atomicity_** is a strong modularity mechanism, it can hide that one high-level action is actually made of many sub-actions. For example, if you have a lot of sub-actions and make them together by using atomicity, then, even though you talk to these sub-actions, it is equivalent to talking to the high-level one action because of the **_atomicity_**.
 
@@ -99,7 +99,7 @@ However, the above is not what we are talking about here. We prefer to talk to t
 
 Today, we are going to focus on <b>Before-or-after</b> atomicity.
 
-### Scale Up
+## Scale Up
 
 <div align=center>
 <div class="row mt-3">
@@ -121,7 +121,7 @@ This is the simplistic view of the machine, we need to use concurrency to scale 
 
 The problem we are solving is we want to automatically make sure despite running and executing the transactions concurrently that the **_before-or-after atomicity is ensured_**.
 
-### Goal of Concurrency Control
+## Goal of Concurrency Control
 
 Transactions should be executed so that it is as though they are executed in some serial order. Also called **Isolation** or **Serializability** or **Before-or-after** atomicity. However, this is not easy to achieve and comes with a certain overhead. So, there are some weaker variants. Weaker variants are also possible, they are about a lower "**degree of isolation**". Below we are going to talk about several different degrees of isolation.
 
@@ -139,13 +139,13 @@ What we mean by serial execution is that T1 should occur with T2 or vice versa. 
 
 <i>Official Statement: If submitted concurrently, net effect should be equivalent to Xacts running in some serial order. No guarantee that T1 logically occurs before T2 (or vice-versa) - but one of them is true.</i>
 
-### Solution 1
+## Solution 1
 
 The first solution is not use concurrency. Just get exclusive lock on entire database => Execute the entire transaction and then release exclusive lock. Hence, only one transaction can access the database at the time. Serializability guarantee because execution is serial!
 
 The problem is obviously no concurrency and it cannot achieve our goal of executing the transactions quickly.
 
-### Solution 2
+## Solution 2
 
 Get exclusive locks on _accessed_ data items. Execute the transaction and release exclusive locks. For example, some transaction will access accounts of A and B, so it will get locked on these accounts. Then execute the transaction and then release the exclusive locks. This is greater concurrency. So, if the two transactions do not access the same data item, they can interact execute concurrently.
 
@@ -161,7 +161,7 @@ In this solution, we grab all the locks we will need, and then, in the end, we r
 
 However, it does not work for our mentioned example. If two transactions access the same data item, there will be no concurrency here, they will be executed serially.s
 
-### Solution 3 CS2PL
+## Solution 3 CS2PL
 
 Let's make it be more relax.
 
@@ -189,7 +189,7 @@ We refine slightly the kind of locks that we are using and in fact, it's already
 
 The problem is that it can still not be concurrent with our example as in our example, there are two modification actions in two transactions.
 
-### Solution 4 C2PL
+## Solution 4 C2PL
 
 Get exclusive locks on data items that are modified and get shared locks on data items that are read.
 
@@ -211,7 +211,7 @@ It is very hard to roll back. Think of multiple transactions and suppose one tra
 
 Conservative refers to the left side of this picture where we at the beginning grab all locks at once.
 
-### Solution 5 S2PL
+## Solution 5 S2PL
 
 Get exclusive locks on data items that are modified and get shared locks on data items that are read, but do this during the execution of the transaction (as needed). Release all locks.
 
@@ -227,7 +227,7 @@ We don't get all the locks at the beginning, we rather start executing and when 
 
 The problem is if T1 requests for A's lock, while T2 requests for B's lock, and then, they just keep waiting and block each other to get the locks. => **_Deadlock_**.
 
-### Solution 6 2PL
+## Solution 6 2PL
 
 Get exclusive locks on data items that are modified and get shared locks on data items that are read, but do this during the execution of the transaction (as needed).
 
@@ -237,7 +237,7 @@ Release locks on objects no longer needed during the execution of the transactio
 
 Gives more concurrency however we also suffer more problems, it has more problems with deadlocks and the cascading.
 
-### Summary of Alternatives
+## Summary of Alternatives
 
 **CS2PL** No deadlocks, no cascading aborts, but need to know objects a priori, **least concurrency**
 
@@ -249,7 +249,7 @@ Gives more concurrency however we also suffer more problems, it has more problem
 
 According to the summary, we need to pick one of them to be the main approach to ensure atomicity. From the perspective of the realistic meaning, CS2PL is not a suitable approach as it is the least concurrency. Additionally, during the execution of the transactions, it is not easy to know the objects you need in advance and this will be a downside. Hence, we select **S2PL** to focus on and address the problems.
 
-### Reason for choice S2PL
+## Reason for choice S2PL
 
 Cannot know objects a priori, so no Conservative options => only if you would know something about the application!
 
@@ -261,7 +261,7 @@ Hence S2PL
 
 **Thus, what we need to do is deal with deadlocks.** => S2PL's problem
 
-### Lock Management
+## Lock Management
 
 Typically our system has a lock manager and we do not technically implement it, we just request an exclusive/shared lock. _Lock/Unlock requests handled by the lock manager._
 
@@ -275,7 +275,7 @@ Locking and unlocking have to be atomic operations => Have to be in composable u
 
 Lock **upgrade**: a transaction that holds a shared lock can be upgraded to hold an exclusive lock.
 
-### Dynamic Databases - Locking the objects that exist now in the database is not enough
+## Dynamic Databases - Locking the objects that exist now in the database is not enough
 
 The protocols (except **_Solution 1_**) which are mentioned above have the limitations that the databases are fixed, for example, the number of records should be fixed at least.
 
@@ -283,13 +283,13 @@ If we relax the assumption that the DB is a fixed collection of objects, even St
 
 The fundamental assumption for all these project protocols is that we **are not extending the objects**.
 
-### The Problem
+## The Problem
 
 To address the problem mentioned above, we need some mechanism to enforce the assumption and that is called **index locking** or **predicate locking**.
 
 The example shows that correctness is guaranteed for locking on individual objects **only if the set of objects is fixed**.
 
-### Index Locking
+## Index Locking
 
 If data is accessed by an **index** on the rating field, T1 should **lock the index page** containing the data entries with rating = 1. If there are no records with rating = 1, T1 must lock the index page where such a data entry would be, if it existed.
 
@@ -299,7 +299,7 @@ If there is no suitable index, we need to lock all the pages and also the entire
 
 Hence, this is called index locking. _Predicate locking is a small generalization of index locking._
 
-### Multiple-Granularity Locks
+## Multiple-Granularity Locks
 
 We have talked about locking the entire database and this is another refinement of the protocols that we looked at you can take locks at all these different levels and this will give you more fined gradient access to the data items that you need.
 
@@ -313,7 +313,7 @@ In fact, the refinement consists of not only using the shared or exclusive locks
   </div>
 </div>
 
-### Solution - New Lock Modes, Protocol
+## Solution - New Lock Modes, Protocol
 
 This is a new lock model that is used to extend the standard mode of excessive entry blocks with so-called intention locks.
 
@@ -351,13 +351,13 @@ Firstly, T1 would like to read the table Emp, and then, it locks the entire daba
   </div>
 </div>
 
-### Is S2PL correct? (Assuming database is not dynamic)
+## Is S2PL correct? (Assuming database is not dynamic)
 
 We will formalize now and next class **serializability** and argue that S2PL is correct.
 
 S2PL can however deadlock. We will see how to handle deadlocks automatically.
 
-### Schedules
+## Schedules
 
 To talk about serializability, we need an notion of schedules.
 
@@ -371,7 +371,7 @@ To talk about serializability, we need an notion of schedules.
 
 _Each action has its own momentum time._
 
-### Scheduling Transactions
+## Scheduling Transactions
 
 1. **Serial schedule**: Schedule that does not interleave the actions of different transcations.
 
@@ -390,7 +390,7 @@ _The two schedules are equivalent if they hold the following two poinst._
 
 (Note: If each transaction preserves consistency, every serializable schedule preserves consistency)
 
-### Anomalies with Interleaved Execution 3
+## Anomalies with Interleaved Execution 3
 
 1. Write-Read Conflict
 
@@ -432,7 +432,7 @@ _The two schedules are equivalent if they hold the following two poinst._
 
    What is the state in the end? The value of A is the one written by T2 and the value of b is the one written by T1, and this is not equivalent to any serial execution.
 
-### Final Summary
+## Final Summary
 
 - Identify the multiple interpretations of the property of atomicity
 - Implement methods to ensure before-or-after atomicity, and argue for their correctness.

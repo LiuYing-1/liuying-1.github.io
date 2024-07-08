@@ -10,7 +10,7 @@ related_posts: true
 thumbnail: assets/img/travel-to-malmo.jpg
 ---
 
-### Travel to Malmö
+## Travel to Malmö
 
 I would like to say this trip was pretty good as I spent the cozy day and bought what I extremely wanted in Malmö.
 Additionally, I ate the Chinese Crispy Chicken at a super cheap and reasonable price which is impossible in Copenhagen. It is so good!!!
