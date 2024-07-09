@@ -17,7 +17,8 @@ li,
 span,
 strong {
   color: var(--global-text-color);
-  font-family: 'Playfair';
+  font-family: "Playfair", serif;
+  font-optical-sizing: auto;
 }
 
 hr {
