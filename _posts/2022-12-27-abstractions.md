@@ -134,7 +134,7 @@ Strong modularity means **_building systems from components where the value of o
 
 - Discuss performance and fault-tolerance aspects of such a design.
 
-#### The central Trade-off - Abstractions, Performance, Fault-Tolerance
+#### The central Tradeoff
 
 When implementing a computer system, **abstractions** and **performance** and **fault-tolerance** are limited by each other. On the one hand, we would like to keep the clean interfaces so we need to have as simple components (abstractions). On the other hand, we still need to get the most use of performance which means we need to break the abstractions. Hence, we need to find ways where abstractions are sensible barriers that do not end up performance. Then, the final part is fault-tolerance.
 
