@@ -112,7 +112,8 @@ Strong modularity means **_building systems from components where the value of o
 
 - Property: Scalability with Data Size
 
-<hr>
+
+
 
 ### What should we learn today?
 
@@ -210,7 +211,7 @@ RAM is extremely expensive and it is volatile, but its speed is fast. While the 
 
 _What does it mean to implement an abstraction? - What we need to do is implement the read and write functions and hide the two-level hierarcy to the users_.
 
----
+
 
 **Proposal** by the student
 
@@ -232,8 +233,7 @@ RAM stores most recently used pages and page map. **_Resident bit (R):_** access
   </div>
 </div>
 
-<hr>
-**How to handle the page faults?**
+
 
 Trap to OS handler and handler loads block from disk and updates mapping. If memory full, must choose some victim block for replacement. Page replacement algorithm, e.g., LRU.
 
