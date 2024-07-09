@@ -18,6 +18,12 @@ authors:
       name: DIKU, UCPH
 ---
 
+
+
+***Disclamer: All the learning notes here are from Advanced Computer System, delieved by UCPH.***
+
+
+
 ### Why study (big) computer systems?
 
 "_How can I program large systems with clean interfaces and high performance?_ "
