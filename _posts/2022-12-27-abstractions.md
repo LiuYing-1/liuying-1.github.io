@@ -18,11 +18,7 @@ authors:
       name: DIKU, UCPH
 ---
 
-
-
-***Disclamer: All the learning notes here are from Advanced Computer System, delieved by UCPH.***
-
-
+**_Disclamer: All the learning notes here are from Advanced Computer System, delieved by UCPH._**
 
 ### Why study (big) computer systems?
 
