@@ -16,9 +16,34 @@ authors:
       name: DIKU, UCPH
 
 toc:
-  sidebar: left
+  - name: Laplacian image sharpening
+    subsections:
+      - name: Intuition
+      - name: General Algorithm
+      - name: Implemented using a Laplacian of Gaussian filter with sigma = 1
+      - name: Interpretation - Scale Space
+      - name: Laplacian image sharpening and noise
+  - name: Deconvolution - The Fourier transform approach
+    subsections:
+      - name: Image degradation model
+      - name: Linear Shift Invariant (LSI) degradation model
+      - name: Point Spread Function (PSF)
+      - name: PSF's from real imaging system can be complicated
+      - name: Noise sources
+      - name: Examples of common noise distributions
+      - name: Example of image enhancement - Hubble space telescope
+      - name: Direct Inverse Filtering
+      - name: Deconvolution in the presense of noise
+      - name: Problems with noise
+      - name: The Wiener filter
+      - name: Accounting for noise
+      - name: The constant approximation is usually good
+      - name: Comparison
+      - name: Origin of the Wiener filter
+      - name: Alternative view
 ---
 
+<div align=center><img src="https://i.imgur.com/D4DTPMX.jpeg" alt="1531680863690_.pic" style="zoom:80%;" data-zoomable/></div>
 <div class="reference" style="color: #999; font-size: 0.8em; margin-top: 1em; margin-bottom: 1em; ">Reference: Lecture from <a href="https://di.ku.dk/english/staff/vip/researchers_image/?pure=en/persons/83684" _target="blank">Kim Steenstrup Pedersen</a></div>
 
 ## Image Restoration by Deconvolution

@@ -9,15 +9,20 @@ related_posts: true
 gist_comments: true
 thumbnail: assets/img/concurrency-2.png
 
-toc:
-  sidebar: left
-
 authors:
   - name: Ying Liu
     url: "https://di.ku.dk/Ansatte/forskere/?pure=da/persons/762476"
     affiliations:
       name: DIKU, UCPH
 ---
+
+<div align=center>
+  <div class="row mt-3">
+    <div class="col-sm mt-3 mt-md-0">
+      <img src="https://i.imgur.com/NBdawZO.png" alt="Group_8_YhdE3vh" class="img-fluid rounded z-depth-1" />
+    </div>
+  </div>
+</div>
 
 ## Do-it-yourself-recap
 

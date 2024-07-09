@@ -16,8 +16,32 @@ authors:
       name: DIKU, UCPH
 
 toc:
-  sidebar: left
+  - name: Pixel-wise Operations
+    subsections:
+      - name: Image file formats and compression
+      - name: Lossless versus lossy compression
+      - name: Lossy image compression creates artifacts
+  - name: Basic pixel-wise operations
+    subsections:
+      - name: Image blending - simulate motion blur
+      - name: Reminder - Quantization of samples/pixels/voxels
+      - name: Images in Python and Scikit-Image
+      - name: File formats for float images
+      - name: Change the contrast to improve visibility
+      - name: Pixel-wise intensity transformations
+  - name: Image formation
+    subsections:
+      - name: A Mathematical Model of Image Formation
+      - name: A mathematical model
+      - name: Modeling the Point Spread Function (PSF)
+  - name: Signal porcessing basics
+    subsections:
+      - name: Dirac delta (impulse) functions
+      - name: What causes the PSF?
+      - name: Example of simulating low photon count
 ---
+
+<div align=center><img src="https://i.imgur.com/k1XNh2S.jpg" style="zoom: 80%"></div>
 
 <div class="reference" style="color: #999; font-size: 0.8em; margin-top: 1em; margin-bottom: 1em;">Reference: Lecture from <a href="https://di.ku.dk/english/staff/vip/researchers_image/?pure=en/persons/83684" _target="blank">Kim Steenstrup Pedersen</a></div>
 

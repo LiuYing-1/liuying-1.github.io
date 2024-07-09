@@ -16,9 +16,43 @@ authors:
       name: DIKU, UCPH
 
 toc:
-  sidebar: left
+  - name: Definitions
+  - name: Applications of filtering
+  - name: Linear filtering
+    subsections:
+      - name: Linear continuous filter
+      - name: Discrete filtering - Intuition
+      - name: Filtering with a sliding neighborhood window
+      - name: Linear discrete filtering
+      - name: Discrete filtering for one pixel in output image
+      - name: Some common linear filters
+      - name: Discrete Mean filter
+      - name: Filtering at the border of the image
+      - name: Linear separable filters
+      - name: Discrete Gaussian filter
+      - name: Noise removal by linear filtering
+      - name: Correlation
+  - name: Non-linear filtering
+    subsections:
+      - name: Definitions
+      - name: Example of a non-linear filter - Median / rank filtering
+      - name: Noise removal by non-linear filtering
+      - name: Median filtering of different salt and pepper noise levels and filter sizes
+  - name: Derivative filters
+    # subsections:
+    #   - name: Image as arrays or functions
+    #   - name: Approximating image derivatives
+    #   - name: Other first order derivative filters
+    #   - name: Linear seperable filters
+    #   - name: Computing derivatives with Sobel filter
+    #   - name: Differentiation filters amplifies noise
+    #   - name: A snippet of differential geometry
+    #   - name: Edge detection
+    #   - name: Zero crossings of Laplacian of Gaussian filter
+  - name: Filtering color images
 ---
 
+<div align=center><img src="https://i.imgur.com/v5mpAt9.png" style="zoom: 80%"></div>
 <div class="reference" style="color: #999; font-size: 0.8em; margin-top: 1em; margin-bottom: 1em; ">Reference: Lecture from <a href="https://di.ku.dk/english/staff/vip/researchers_image/?pure=en/persons/83684" _target="blank">Kim Steenstrup Pedersen</a></div>
 
 ## Filtering

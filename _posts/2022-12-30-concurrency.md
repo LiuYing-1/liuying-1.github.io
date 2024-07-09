@@ -8,8 +8,6 @@ categories: study ucph
 related_posts: true
 giscus_comments: true
 thumbnail: assets/img/concurrency.png
-toc:
-  sidebar: left
 
 authors:
   - name: Ying Liu
@@ -19,6 +17,12 @@ authors:
 ---
 
 <div align=right><I>Reference: This note is based on the Course Advanced Computer Systems from UCPH</I></div>
+
+<div class="row mt-3">
+    <div class="col-sm mt-3 mt-md-0">
+     <img src="https://i.imgur.com/EFRqraM.png" class="img-fluid rounded z-depth-1" data-zoomable>
+    </div>
+</div>
 
 ## Do-it-yourself Recap
 

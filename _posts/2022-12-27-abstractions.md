@@ -9,7 +9,21 @@ related_posts: true
 date: 2022-12-27 19:37:00
 thumbnail: assets/img/abstractions.jpg
 toc:
-  sidebar: left
+  - name: Intro
+    subsections:
+      - name: Why study (big) computer systems?
+      - name: What is the scale of our computer systems?
+      - name: What should we learn in this course?
+      - name: What will we study?
+  - name: What should we learn today?
+    subsections:
+      - name: The central Trade-off - Abstractions, Performance, Fault-Tolerance
+      - name: Fundamental abstractions
+      - name: Name Mapping
+      - name: Memory Abstraction
+      - name: How would you design a two-level memory memory abstraction consolidating disk and RAM?
+      - name: Virtual Memory with Paging
+      - name: Interpreters Abstraction
 
 authors:
   - name: Ying Liu
@@ -19,6 +33,14 @@ authors:
 ---
 
 **_Disclamer: All the learning notes here are from Advanced Computer System, delieved by UCPH._**
+
+<div align=center>
+  <div class="row mt-3">
+    <div class="col-sm mt-3 mt-md-0">
+		  {% include figure.html path="assets/img/abstractions.jpg" class="img-fluid rounded z-depth-1" zoomable=true %}
+    </div>
+  </div>
+</div>
 
 ### Why study (big) computer systems?
 
@@ -111,9 +133,6 @@ Strong modularity means **_building systems from components where the value of o
   More about algorithms and how to improve the performance with algorithms that implement parallelism.
 
 - Property: Scalability with Data Size
-
-
-
 
 ### What should we learn today?
 
@@ -211,8 +230,6 @@ RAM is extremely expensive and it is volatile, but its speed is fast. While the 
 
 _What does it mean to implement an abstraction? - What we need to do is implement the read and write functions and hide the two-level hierarcy to the users_.
 
-
-
 **Proposal** by the student
 
 Store both data in the RAM and disk. And always access the RAM first, if RAM finds the value, that's good. When does not, then RAM would swap in the data from disk and to swap in RAM would use. Maybe at least recently use strategy to decide which page from the disk answer from the RAM to swap out.
@@ -232,8 +249,6 @@ RAM stores most recently used pages and page map. **_Resident bit (R):_** access
     </div>
   </div>
 </div>
-
-
 
 Trap to OS handler and handler loads block from disk and updates mapping. If memory full, must choose some victim block for replacement. Page replacement algorithm, e.g., LRU.
 
