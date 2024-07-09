@@ -18,7 +18,7 @@ authors:
       name: DIKU, UCPH
 ---
 
-## Why study (big) computer systems?
+### Why study (big) computer systems?
 
 "_How can I program large systems with clean interfaces and high performance?_ "
 
@@ -36,13 +36,13 @@ How to ensure I am accessing my data, instead of others?
 
 <div align=right><I>Amazon/Google</I></div>
 
-### What is the scale of our computer systems?
+#### What is the scale of our computer systems?
 
 According to the data in 2007, there is an increasing number of users and mountainous data for us to process. Building a system capable of processing such data is extremely demanding right now. To conclude with a specific example. How to build a trust-worthy "Facebook"?
 
 <div align=center><i><font color=red>How can we think about and architect large-scale computer systems? <b>Design</b> and <b>Build</b></font></i></div>
 
-### What should we learn in this course?
+#### What should we learn in this course?
 
 <b>Knowledge</b>
 
@@ -68,7 +68,7 @@ Analyze _protocols for concurrency control and recovery,_ as well as for distrib
 
 Apply principles of large-scale data processing to analyze concrete information-processing problems. (Realize and build a model for addressing the future problem.)
 
-### What will we study?
+#### What will we study?
 
 **Topic 1:** Strong Modularity
 
@@ -112,7 +112,7 @@ Strong modularity means **_building systems from components where the value of o
 
 <hr>
 
-## What should we learn today?
+### What should we learn today?
 
 - Identify the fundamental abstractions in computer systems and their APIs, including memory, interpreters, and communication links.
 
@@ -128,13 +128,13 @@ Strong modularity means **_building systems from components where the value of o
 
 - Discuss performance and fault-tolerance aspects of such a design.
 
-### The central Trade-off - Abstractions, Performance, Fault-Tolerance
+#### The central Trade-off - Abstractions, Performance, Fault-Tolerance
 
 When implementing a computer system, **abstractions** and **performance** and **fault-tolerance** are limited by each other. On the one hand, we would like to keep the clean interfaces so we need to have as simple components (abstractions). On the other hand, we still need to get the most use of performance which means we need to break the abstractions. Hence, we need to find ways where abstractions are sensible barriers that do not end up performance. Then, the final part is fault-tolerance.
 
 When introducing an abstraction, we will have a barrier between two components, and in particular, you will need to have a communication mechanism on this barrier. Hence, when introducing components, we increase the attack. (<font color=red>Not fully understood</font>)
 
-### Fundamental abstractions
+#### Fundamental abstractions
 
 **Memory abstraction** `(Read/Write)`
 
@@ -152,7 +152,7 @@ It can be async and we don't wait for the response or something like that.
 
 Sometimes, we call a name an address if it has some location information. **Address is an overloaded name with location info. (e.g., LOAD 1742, R1)**. The rest of the names require a mapping scheme to translate the original info into a fixed location. For example, a website is commonly associated with an IP address, and so on.
 
-### Name Mapping
+#### Name Mapping
 
 **How can we map names?**
 
@@ -170,7 +170,7 @@ There might be some names structured with `/`, just like URLs, web addresses, or
 
 When we code `Overloading` with Java, we might call a method in Java. This can be long multiple classes and you try to find or Java tries to find the best matching instance of the class to pick the implementation of the method you're interested in. It is based on the types of objects involved.
 
-### Memory Abstraction
+#### Memory Abstraction
 
 **API of the memory**
 
@@ -186,7 +186,7 @@ _RAM stores virtual addresses, while the disk stores physical addresses._
 
 Typically, when we are writing to the physical memory and our computer, we are using a physical address but typically we don't address the RAM directly. But we work with a multi-level memory hierarchy that goes from memory that we can access quickly like the RAM.
 
-### How would you design a two-level memory abstraction consolidating disk and RAM?
+#### How would you design a two-level memory abstraction consolidating disk and RAM?
 
 <div align=center>
   <div class="row mt-3">
@@ -241,7 +241,7 @@ Other metadata: **_Dirty bit (D):_** Only write page back when it has changed! P
 
 To achieve this objective, we should put a page map recording `#Page`, `#Block`, `Pr`, `R`, `D` and `P` into the RAM, with some pages selected automatically which are mostly used recently by the computer. Then, when accessing a data. The computer system will access the RAM to lookup the table. Check whether the page is resident or not by verifing its `resident bit`. If value is `1`, then just get the data from the table which is already stored in the RAM. If not, check whether the RAM is full or not. If it is already full, apply LRU strategy to find out the record which is ready to replace. Then, check its `dirty bit` whether it is `1` or `0`. If the value is `1`, write the page back to the disk, then, clear that page in the RAM and replace it with the needed new page. Otherwise, clear and replace the needed new page.s
 
-### Virtual Memory with Paging
+#### Virtual Memory with Paging
 
 Abstraction: Do we have any guarantees on two concurrent threads writing to the same memory?
 
@@ -255,11 +255,11 @@ Fault-Tolerance: What happens on failure? Do we have any guarantees about the st
 
 - Depends on the data. If the fault happens in the disk, there might be only one page lost. However, if the electricity is running out, all the data stored in the RAM will lose.
 
-### Interpreters Abstraction
+#### Interpreters Abstraction
 
 Examples of interpreters
 
-### Communication links
+#### Communication links
 
 API: `SEND(linkName, ourgoingMessageBuffer)`, `RECEIVE(linkName, incomingMessageBuffer)`
 
