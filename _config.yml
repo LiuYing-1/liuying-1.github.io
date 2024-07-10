@@ -490,8 +490,8 @@ third_party_libraries:
     version: "5.5.0"
   google_fonts:
     url:
-      # fonts: "https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Roboto+Slab:100,300,400,500,700|Material+Icons&display=swap"
-      fonts: "https://fonts.googleapis.com/css2?family=Playfair:ital,opsz,wght@0,5..1200,300..900;1,5..1200,300..900&display=swap"
+      fonts: "https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Roboto+Playfair+Slab:100,300,400,500,700|Material+Icons&display=swap"
+      # fonts: "https://fonts.googleapis.com/css2?family=Playfair:ital,opsz,wght@0,5..1200,300..900;1,5..1200,300..900&display=swap"
   highlightjs:
     integrity:
       css:
