@@ -30,7 +30,7 @@
       "startDate": "2024-09-01",
       "endDate": "Present",
       "summary": "Working on integrating AI into industrial manufacturing, together with the geometric algorithms.",
-      "highlights": ["Translating Algorithms", "Exploring AI Uses"]
+      "highlights": ["Translating algorithms", "Exploring AI uses"]
     },
     {
       "name": "Datalogisk Institut, Københavns Universitet",
@@ -38,8 +38,8 @@
       "url": "https://di.ku.dk/",
       "startDate": "2024-03-01",
       "endDate": "Present",
-      "summary": "Teaching at Palmer Physical Laboratory (now 302 Frist Campus Center). While not a professor at Princeton, I associated with the physics professors and continued to give lectures on campus.",
-      "highlights": ["Hold Exercise Session", "Grade Assignments"]
+      "summary": "Teaching at Advanced Deep Learning at University of Copenhagen.",
+      "highlights": ["Hold exercise session", "Grade assignments"]
     }
   ],
   "education": [
@@ -107,7 +107,7 @@
     },
     {
       "title": "Excellent and First Class Scholarship",
-      "date": "2018 - 2022",
+      "date": "2018.09 - 2022.06",
       "awarder": "Nanjing Institute of Technology",
       "url": "",
       "summary": ""
@@ -147,7 +147,7 @@
     {
       "name": "Professor Stefan Sommer",
       "icon": "fa-solid fa-laptop",
-      "reference": "He is a super nice professor and offers a lot of help to me once I came to Denmark. He provides me with a TA position at his course and subsequently a AI Engineer position at Component AI."
+      "reference": "He is a super nice professor and offers a lot of help to me once I came to Denmark. He provides me with a TA position at his course and subsequently an AI Engineer position at Component AI."
     },
     {
       "name": "Professor Jens Petersen",
