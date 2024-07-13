@@ -10,3 +10,4 @@ giscus_comments: true
 thumbnail: https://i.imgur.com/N66tWR3.jpeg
 ---
 
+ready to go
