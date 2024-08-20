@@ -128,11 +128,11 @@
   "interests": [
     {
       "name": "Singining",
-      "icon": "fa-solid fa-microphone-stand"
+      "icon": "fa-solid fa-music"
     },
     {
       "name": "Yummy Food",
-      "icon": "fa-duotone fa-utensils"
+      "icon": "fa-solid fa-chopsticks"
     },
     {
       "name": "Cooking",
@@ -142,8 +142,8 @@
       "name": "Horror Movies",
       "icon": "fa-solid fa-film"
     }
-  ],
-  "references": [
+  ]
+  /* "references": [
     {
       "name": "Professor Stefan Sommer",
       "icon": "fa-solid fa-laptop",
@@ -154,5 +154,5 @@
       "icon": "fa-solid fa-thumbtack",
       "reference": "He was a very patient professor and taught me a lot of knowledge about AI and Medical Image Analysis. He was the supervisor of my master thesis focused on Lung Cancer Radiotherapy."
     }
-  ]
+  ] */
 }
