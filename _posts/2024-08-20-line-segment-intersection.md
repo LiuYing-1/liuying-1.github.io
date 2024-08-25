@@ -6,17 +6,13 @@ description: Self-learning note for CG - Line Segment Intersection.
 tags: cg
 categories: study c-ai
 related_posts: true
-giscus_comments: true
+giscus_comments: false
 thumbnail: assets/img/line_segment_intersection.png
 ---
 
-
+#### 线段求交-专题图叠合
 
 This post is the collection of the extracts from the book Computational Geometry 3^rd^ - Berg et. al., and it is collected in Chinese so that I can recall it quickly when I need it later on.
-
-
-
-### 线段求交 专题图叠合
 
 **Why** 地图不能帮助游客知道确切想要的信息。即使知道某个小镇的大致方位，也很难在地图上确定他的位置。
 
@@ -37,7 +33,7 @@ This post is the collection of the extracts from the book Computational Geometry
 
 在叠合这个过程中，不同 map 相交的位置就显得很有用。比如气候学家可以通过叠合 松林覆盖 map 和降雨量 map 筛选出符合这两个条件的子区域（可以理解为交集）。
 
-#### 2.1 线段求交
+##### 线段求交
 
 我们提取出其中的数学表达形式。
 
@@ -91,4 +87,6 @@ $O$ 代表 $\leq$ 表示在最坏情况下，算法的运行时间至多为，�
 
 为了找出这样的线段对，用一条直线 $l$ ，**从一个高于所有线段的位置，从上而下的扫过整个平面**。在这条假想的直线扫过平面的过程中，跟踪记录所有与之相交的线段，以找出所需的所有线段对。
 
-这类算法被称为**平面扫描算法（plane sweep algorithm）**，其中使用到的直线 $l$​ 被称为**扫描线（sweep line）**。与**当前扫描线相交的所有线段的集合**是这条**扫描线的状态（status）**
+这类算法被称为**平面扫描算法（plane sweep algorithm）**，其中使用到的直线 $l$​ 被称为**扫描线（sweep line）**。与**当前扫描线相交的所有线段的集合**是这条**扫描线的状态（status）**。随着扫描线的向下推进，它的状态不断变化，不过并不是连续的。只有在某些特定位置，才需要对扫描线的状态进行更新。我们称这些位置为平面扫描算法的时间点（event point）。在这个算法中，这里的事件点（event point）就是各线段的端点，如下图。
+
+![image-20240825163803049](https://i.imgur.com/4JGt9R6.png)
