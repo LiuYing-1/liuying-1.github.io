@@ -1,5 +1,5 @@
 ---
-layout: distill
+layout: post
 title: Line Segment Intersection
 date: 2024-08-20 08:00:00
 description: Self-learning note for CG - Line Segment Intersection.
@@ -10,16 +10,13 @@ toc:
   sidebar: left
 giscus_comments: true
 thumbnail: assets/img/line_segment_intersection.png
-
-authors:
-  - name: Ying Liu
-    affiliations:
-      name: Component AI
 ---
 
 
 
 This post is the collection of the extracts from the book Computational Geometry 3^rd^ - Berg et. al., and it is collected in Chinese so that I can recall it quickly when I need it later on.
+
+
 
 ### 线段求交 专题图叠合
 
