@@ -91,4 +91,11 @@ $$O$$ 代表 $$\leq$$ 表示在最坏情况下，算法的运行时间至多为�
 
 这类算法被称为**平面扫描算法（plane sweep algorithm）**，其中使用到的直线 $$l$$​ 被称为**扫描线（sweep line）**。与**当前扫描线相交的所有线段的集合**是这条**扫描线的状态（status）**。随着扫描线的向下推进，它的状态不断变化，不过并不是连续的。只有在某些特定位置，才需要对扫描线的状态进行更新。我们称这些位置为平面扫描算法的时间点（event point）。在这个算法中，这里的事件点（event point）就是各线段的端点，如下图。
 
-![image-20240825163803049](https://i.imgur.com/4JGt9R6.png)
+<div class="row mt-3 mb-3">
+    <div class="col-sm mt-3 mt-md-0">
+       <img src="https://i.imgur.com/4JGt9R6.png" alt="image-20230919201623320" class="img-fluid rounded z-depth-1" data-zoomable />
+    </div>
+</div>
+<div class="caption">
+  Figure 3. 阐述
+</div>
