@@ -8,8 +8,6 @@ categories: study c-ai
 related_posts: true
 giscus_comments: false
 thumbnail: assets/img/line_segment_intersection.png
-toc:
-  sidebar: left
 ---
 
 #### 线段求交-专题图叠合
