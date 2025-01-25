@@ -5,4 +5,4 @@ inline: true
 related_posts: false
 ---
 
-I have defended my master thesis **"Exploration of Self-Supervised Learning Methods for Longitudinal Image Analysis"** and received my Master's Degree. Meanwhile, I have been offered a job as an **AI Engineer** in a company. 🎓🎉🚀
+I have defended my master thesis **"Exploration of Self-Supervised Learning Methods for Longitudinal Image Analysis"** and received my Master's Degree. Meanwhile, I have been offered a job as an **AI Engineer** in Component-AI ApS. 🎓🎉🚀
